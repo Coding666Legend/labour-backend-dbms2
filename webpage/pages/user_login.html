@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In - SkillConnect</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fskillconne8915back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.6"></script>
+</head>
+<body class="bg-background min-h-screen">
+    <!-- Header -->
+    <header class="bg-surface border-b border-border shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="user_login.html" class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
+                            </svg>
+                        </div>
+                        <span class="text-heading-3 font-bold text-text-primary">SkillConnect</span>
+                    </a>
+                </div>
+                
+                <!-- Registration Link -->
+                <div class="flex items-center">
+                    <a href="user_registration.html" class="text-body text-text-secondary hover:text-primary transition-smooth">
+                        Need an account? <span class="font-medium text-primary">Sign Up</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+<!-- Admin Alerts -->
+<div id="adminAlerts" class="bg-warning-50 border-b border-warning-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+        <!-- CRITICAL ALERT -->
+        <!-- <div id="criticalAlert" class="mb-3 bg-error-50 border border-error-200 rounded-lg p-4">
+            <div class="flex items-start space-x-3">
+                <div class="flex-shrink-0">
+                    <svg class="w-5 h-5 text-error-600 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                    </svg>
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-body font-medium text-error-800">System Maintenance Notice</h3>
+                    <p class="text-caption text-error-700 mt-1">
+                        Scheduled maintenance on January 31st, 2025 from 2:00 AM - 4:00 AM EST. Some features may be temporarily unavailable.
+                    </p>
+                </div>
+                <button onclick="dismissAlert('criticalAlert')" class="flex-shrink-0 text-error-400 hover:text-error-600 transition-colors">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                    </svg>
+                </button>
+            </div>
+        </div> -->
+
+        <!-- INFO ALERT -->
+        <!-- <div id="infoAlert" class="mb-3 bg-primary-50 border border-primary-200 rounded-lg p-4">
+            <div class="flex items-start space-x-3">
+                <div class="flex-shrink-0">
+                    <svg class="w-5 h-5 text-primary-600 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+                    </svg>
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-body font-medium text-primary-800">New Feature Available</h3>
+                    <p class="text-caption text-primary-700 mt-1">
+                        We've added enhanced profile management tools. Update your skills and certifications to get better job matches!
+                    </p>
+                </div>
+                <button onclick="dismissAlert('infoAlert')" class="flex-shrink-0 text-primary-400 hover:text-primary-600 transition-colors">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                    </svg>
+                </button>
+            </div>
+        </div> -->
+
+        <!-- SUCCESS ALERT -->
+        <!-- <div id="successAlert" class="bg-success-50 border border-success-200 rounded-lg p-4">
+            <div class="flex items-start space-x-3">
+                <div class="flex-shrink-0">
+                    <svg class="w-5 h-5 text-success-600 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-body font-medium text-success-800">Welcome to SkillConnect!</h3>
+                    <p class="text-caption text-success-700 mt-1">
+                        Join thousands of skilled professionals connecting with contractors. Your next opportunity awaits!
+                    </p>
+                </div>
+                <button onclick="dismissAlert('successAlert')" class="flex-shrink-0 text-success-400 hover:text-success-600 transition-colors">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                    </svg>
+                </button>
+            </div>
+        </div> -->
+    </div>
+</div>
+
+
+    <!-- Main Content -->
+    <main class="flex-1 py-8 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-sm mx-auto">
+            <!-- Login Form Header -->
+            <div class="text-center mb-8">
+                <h1 class="text-heading-1 font-bold text-text-primary mb-2">Welcome Back</h1>
+                <p class="text-body text-text-secondary">Sign in to your SkillConnect account</p>
+            </div>
+
+            <!-- Login Form -->
+            <div class="card p-6 sm:p-8">
+                <form id="loginForm" class="space-y-6">
+                    <!-- Email Field -->
+                    <div>
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" id="email" name="email" class="form-input focus-ring" placeholder="Enter your email" required />
+                        <div class="error-message hidden text-error text-caption mt-1"></div>
+                    </div>
+
+                    <!-- Password Field -->
+                    <div>
+                        <label for="password" class="form-label">Password</label>
+                        <div class="relative">
+                            <input type="password" id="password" name="password" class="form-input focus-ring pr-10" placeholder="Enter your password" required />
+                            <button type="button" id="togglePassword" class="absolute inset-y-0 right-0 pr-3 flex items-center">
+                                <svg class="w-5 h-5 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="error-message hidden text-error text-caption mt-1"></div>
+                    </div>
+
+                    <!-- Remember Me & Forgot Password -->
+                    <div class="flex items-center justify-between">
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="checkbox" id="rememberMe" name="rememberMe" class="rounded border-border text-primary focus:ring-primary" />
+                            <span class="text-body text-text-secondary">Remember me</span>
+                        </label>
+                        <a href="javascript:void(0)" class="text-body text-primary hover:underline">Forgot password?</a>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" id="submitBtn" class="w-full btn btn-primary py-3 text-body font-medium">
+                        <span id="submitText">Sign In</span>
+                        <div id="submitSpinner" class="hidden spinner ml-2"></div>
+                    </button>
+
+                    <!-- Error Message -->
+                    <div id="loginError" class="hidden bg-error-50 border border-error-100 text-error-600 px-4 py-3 rounded-lg text-body">
+                        <div class="flex items-center space-x-2">
+                            <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                            </svg>
+                            <span id="errorText">Invalid email or password. Please try again.</span>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Demo Credentials
+                <div class="mt-6 pt-6 border-t border-border">
+                    <h3 class="text-body font-medium text-text-primary mb-3">Demo Accounts</h3>
+                    <div class="space-y-2 text-caption">
+                        <div class="bg-secondary-50 p-3 rounded-lg">
+                            <p class="font-medium text-text-primary">Admin:</p>
+                            <p class="text-text-secondary">admin@skillconnect.com / admin123</p>
+                        </div>
+                        <div class="bg-primary-50 p-3 rounded-lg">
+                            <p class="font-medium text-text-primary">Contractor:</p>
+                            <p class="text-text-secondary">contractor@example.com / contractor123</p>
+                        </div>
+                        <div class="bg-accent-50 p-3 rounded-lg">
+                            <p class="font-medium text-text-primary">Laborer:</p>
+                            <p class="text-text-secondary">laborer@example.com / laborer123</p>
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- Trust Signals -->
+                <div class="mt-6 pt-6 border-t border-border">
+                    <div class="flex items-center justify-center space-x-4 text-caption text-text-secondary">
+                        <div class="flex items-center space-x-1">
+                            <svg class="w-4 h-4 text-success" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>SSL Secured</span>
+                        </div>
+                        <div class="flex items-center space-x-1">
+                            <svg class="w-4 h-4 text-success" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Privacy Protected</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Registration Link -->
+            <div class="text-center mt-6">
+                <p class="text-body text-text-secondary">
+                    Need an account? 
+                    <a href="user_registration.html" class="text-primary font-medium hover:underline">Sign up here</a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div class="bg-surface rounded-lg p-6 max-w-sm w-full">
+            <div class="text-center">
+                <div class="w-12 h-12 bg-success-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-6 h-6 text-success" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                    </svg>
+                </div>
+                <h3 class="text-heading-3 font-medium text-text-primary mb-2">Welcome Back!</h3>
+                <p class="text-body text-text-secondary mb-4">You have successfully signed in to your account.</p>
+                <button onclick="closeSuccessModal()" class="btn btn-primary w-full">Continue to Dashboard</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // Mock user data for authentication
+    const mockUsers = {
+        'admin@skillconnect.com': {
+            password: 'admin123',
+            role: 'admin',
+            name: 'Admin User',
+            dashboard: 'admin_user_management.html'
+        },
+        'contractor@example.com': {
+            password: 'contractor123',
+            role: 'contractor',
+            name: 'John Smith',
+            dashboard: 'contractor_dashboard.html'
+        },
+        'laborer@example.com': {
+            password: 'laborer123',
+            role: 'laborer',
+            name: 'Mike Johnson',
+            dashboard: 'laborer_dashboard.html'
+        }
+    };
+
+    // Admin Alert Management
+    function dismissAlert(alertId) {
+        const alert = document.getElementById(alertId);
+        if (alert) {
+            alert.style.transition = 'all 0.3s ease-out';
+            alert.style.opacity = '0';
+            alert.style.transform = 'translateY(-10px)';
+            
+            setTimeout(() => {
+                alert.remove();
+                
+                // Store dismissed alert in localStorage
+                const dismissedAlerts = JSON.parse(localStorage.getItem('dismissedAlerts') || '[]');
+                if (!dismissedAlerts.includes(alertId)) {
+                    dismissedAlerts.push(alertId);
+                    localStorage.setItem('dismissedAlerts', JSON.stringify(dismissedAlerts));
+                }
+                
+                // Hide entire alert container if no alerts remain
+                const alertContainer = document.getElementById('adminAlerts');
+                const remainingAlerts = alertContainer.querySelectorAll('[id$="Alert"]');
+                if (remainingAlerts.length === 0) {
+                    alertContainer.style.display = 'none';
+                }
+            }, 300);
+        }
+    }
+
+    // Check for dismissed alerts on page load
+    function initializeAlerts() {
+        const dismissedAlerts = JSON.parse(localStorage.getItem('dismissedAlerts') || '[]');
+        dismissedAlerts.forEach(alertId => {
+            const alert = document.getElementById(alertId);
+            if (alert) {
+                alert.remove();
+            }
+        });
+        
+        // Hide alert container if no alerts remain
+        const alertContainer = document.getElementById('adminAlerts');
+        const remainingAlerts = alertContainer.querySelectorAll('[id$="Alert"]');
+        if (remainingAlerts.length === 0) {
+            alertContainer.style.display = 'none';
+        }
+    }
+
+    // Password visibility toggle
+    const togglePassword = document.getElementById('togglePassword');
+    const passwordInput = document.getElementById('password');
+
+    togglePassword.addEventListener('click', function() {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        
+        const icon = this.querySelector('svg');
+        if (type === 'text') {
+            icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L12 12m-3.122-3.122L12 12m0 0l3.878 3.878M12 12l3.878-3.878m-7.756 0L12 12"/>';
+        } else {
+            icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>';
+        }
+    });
+
+    // Form submission
+    const loginForm = document.getElementById('loginForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const submitText = document.getElementById('submitText');
+    const submitSpinner = document.getElementById('submitSpinner');
+    const loginError = document.getElementById('loginError');
+    const errorText = document.getElementById('errorText');
+
+    loginForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const rememberMe = document.getElementById('rememberMe').checked;
+
+        // Hide previous error
+        loginError.classList.add('hidden');
+
+        // Show loading state
+        submitText.textContent = 'Signing In...';
+        submitSpinner.classList.remove('hidden');
+        submitBtn.disabled = true;
+
+        // Simulate API call
+        setTimeout(() => {
+            // Check credentials
+            const user = mockUsers[email];
+            
+            if (user && user.password === password) {
+                // Store user session
+                const userData = {
+                    email: email,
+                    name: user.name,
+                    role: user.role,
+                    loginTime: new Date().toISOString(),
+                    rememberMe: rememberMe
+                };
+                
+                localStorage.setItem('skillconnect_user', JSON.stringify(userData));
+                
+                // Show success modal
+                document.getElementById('successModal').classList.remove('hidden');
+                
+                // Store dashboard URL for redirect
+                sessionStorage.setItem('redirect_dashboard', user.dashboard);
+            } else {
+                // Show error
+                errorText.textContent = 'Invalid email or password. Please try again.';
+                loginError.classList.remove('hidden');
+                
+                // Add shake animation to form
+                const form = document.querySelector('.card');
+                form.style.animation = 'shake 0.5s ease-in-out';
+                setTimeout(() => {
+                    form.style.animation = '';
+                }, 500);
+            }
+
+            // Reset button state
+            submitText.textContent = 'Sign In';
+            submitSpinner.classList.add('hidden');
+            submitBtn.disabled = false;
+        }, 1500);
+    });
+
+    // Success modal functions
+    function closeSuccessModal() {
+        const dashboardUrl = sessionStorage.getItem('redirect_dashboard');
+        sessionStorage.removeItem('redirect_dashboard');
+        window.location.href = dashboardUrl || 'laborer_dashboard.html';
+    }
+
+    // Auto-fill demo credentials when clicked
+    document.querySelectorAll('.bg-secondary-50, .bg-primary-50, .bg-accent-50').forEach(demo => {
+        demo.addEventListener('click', function() {
+            const text = this.textContent;
+            if (text.includes('admin@skillconnect.com')) {
+                document.getElementById('email').value = 'admin@skillconnect.com';
+                document.getElementById('password').value = 'admin123';
+            } else if (text.includes('contractor@example.com')) {
+                document.getElementById('email').value = 'contractor@example.com';
+                document.getElementById('password').value = 'contractor123';
+            } else if (text.includes('laborer@example.com')) {
+                document.getElementById('email').value = 'laborer@example.com';
+                document.getElementById('password').value = 'laborer123';
+            }
+        });
+    });
+
+    // Form validation
+    const inputs = document.querySelectorAll('.form-input');
+    inputs.forEach(input => {
+        input.addEventListener('blur', function() {
+            const errorDiv = this.parentNode.querySelector('.error-message') || 
+                            this.parentNode.parentNode.querySelector('.error-message');
+            if (this.validity.valid) {
+                this.classList.remove('border-error');
+                this.classList.add('border-success');
+                if (errorDiv) errorDiv.classList.add('hidden');
+            } else {
+                this.classList.remove('border-success');
+                this.classList.add('border-error');
+                if (errorDiv) {
+                    errorDiv.textContent = this.validationMessage;
+                    errorDiv.classList.remove('hidden');
+                }
+            }
+        });
+
+        input.addEventListener('input', function() {
+            if (this.validity.valid) {
+                this.classList.remove('border-error');
+                const errorDiv = this.parentNode.querySelector('.error-message') || 
+                                this.parentNode.parentNode.querySelector('.error-message');
+                if (errorDiv) errorDiv.classList.add('hidden');
+            }
+        });
+    });
+
+    // Check for existing session on page load
+    window.addEventListener('load', function() {
+        // Initialize alerts
+        initializeAlerts();
+        
+        const userData = localStorage.getItem('skillconnect_user');
+        if (userData) {
+            const user = JSON.parse(userData);
+            // If remember me was checked or session is recent (less than 24 hours)
+            const loginTime = new Date(user.loginTime);
+            const now = new Date();
+            const hoursDiff = (now - loginTime) / (1000 * 60 * 60);
+            
+            if (user.rememberMe || hoursDiff < 24) {
+                // Auto-redirect to appropriate dashboard
+                const dashboards = {
+                    'admin': 'admin_user_management.html',
+                    'contractor': 'contractor_dashboard.html',
+                    'laborer': 'laborer_dashboard.html'
+                };
+                window.location.href = dashboards[user.role] || 'laborer_dashboard.html';
+            }
+        }
+    });
+
+    // Add shake animation CSS
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+    `;
+    document.head.appendChild(style);
+</script>
+</body>
+</html>

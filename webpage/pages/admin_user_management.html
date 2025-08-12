@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin User Management - SkillConnect</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fskillconne8915back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.6"></script>
+</head>
+<body class="bg-background min-h-screen">
+    <!-- Header -->
+    <header class="bg-surface border-b border-border shadow-sm">
+        <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
+                        </svg>
+                    </div>
+                    <span class="text-heading-3 font-bold text-text-primary ml-2">SkillConnect Admin</span>
+                </div>
+                
+                <!-- Header Actions -->
+                <div class="flex items-center space-x-4">
+                    <!-- Notifications -->
+                    <button class="relative p-2 text-text-secondary hover:text-primary transition-smooth">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5 5v-5zM10.5 3.75a6 6 0 0 1 6 6v2.25l2.25 2.25v2.25H2.25V14.25L4.5 12V9.75a6 6 0 0 1 6-6z"/>
+                        </svg>
+                        <span class="absolute -top-1 -right-1 bg-error text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
+                    </button>
+                    
+                    <!-- Admin Profile -->
+                    <div class="flex items-center space-x-2">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Admin" class="w-8 h-8 rounded-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                        <span class="text-body font-medium text-text-primary">Admin</span>
+                        <button onclick="handleLogout()" class="text-text-secondary hover:text-error transition-smooth" title="Logout" aria-label="Logout">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex min-h-screen">
+        <!-- Admin Sidebar -->
+        <aside class="w-64 bg-surface border-r border-border shadow-sm">
+            <nav class="p-4 space-y-2">
+                <!-- Dashboard -->
+                <a href="javascript:void(0)" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-text-secondary hover:bg-secondary-50 hover:text-primary transition-smooth">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+                    </svg>
+                    <span class="text-body">Dashboard</span>
+                </a>
+
+                <!-- User Management - Active -->
+                <a href="admin_user_management.html" class="flex items-center space-x-3 px-3 py-2 rounded-lg bg-primary-50 text-primary border-l-4 border-primary">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/>
+                    </svg>
+                    <span class="text-body font-medium">User Management</span>
+                </a>
+
+                <!-- Job Management -->
+                <a href="javascript:void(0)" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-text-secondary hover:bg-secondary-50 hover:text-primary transition-smooth">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd"/>
+                    </svg>
+                    <span class="text-body">Job Management</span>
+                </a>
+
+                <!-- Reports -->
+                <a href="javascript:void(0)" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-text-secondary hover:bg-secondary-50 hover:text-primary transition-smooth">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/>
+                    </svg>
+                    <span class="text-body">Reports</span>
+                </a>
+
+                <!-- Settings -->
+                <a href="javascript:void(0)" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-text-secondary hover:bg-secondary-50 hover:text-primary transition-smooth">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+                    </svg>
+                    <span class="text-body">Settings</span>
+                </a>
+
+                <div class="border-t border-border pt-4 mt-4">
+                    <!-- Quick Links -->
+                    <p class="text-caption font-medium text-text-secondary mb-2 px-3">Quick Links</p>
+                    <a href="laborer_dashboard.html" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-text-secondary hover:bg-secondary-50 hover:text-primary transition-smooth">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        <span class="text-caption">Laborer View</span>
+                    </a>
+                    <a href="contractor_dashboard.html" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-text-secondary hover:bg-secondary-50 hover:text-primary transition-smooth">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"/>
+                            <path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd"/>
+                        </svg>
+                        <span class="text-caption">Contractor View</span>
+                    </a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6">
+            <!-- Breadcrumb Navigation -->
+            <nav class="flex items-center space-x-2 text-caption text-text-secondary mb-6">
+                <a href="javascript:void(0)" class="hover:text-primary transition-smooth">Admin</a>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                </svg>
+                <span class="text-primary font-medium">User Management</span>
+            </nav>
+
+            <div class="flex gap-6">
+                <!-- Main Content Area -->
+                <div class="flex-1">
+                    <!-- Page Header -->
+                    <div class="flex justify-between items-center mb-6">
+                        <div>
+                            <h1 class="text-heading-1 font-bold text-text-primary">User Management</h1>
+                            <p class="text-body text-text-secondary mt-1">Manage and moderate platform users</p>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <button onclick="exportUsers()" class="btn btn-secondary">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                </svg>
+                                Export
+                            </button>
+                            <button onclick="openBulkActions()" class="btn btn-primary">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4"/>
+                                </svg>
+                                Bulk Actions
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Filters and Search -->
+                    <div class="card p-4 mb-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+                            <!-- Search -->
+                            <div class="lg:col-span-2">
+                                <label class="form-label">Search Users</label>
+                                <div class="relative">
+                                    <input type="text" id="searchInput" placeholder="Search by name, email, or phone..." class="form-input focus-ring pl-10" onkeyup="filterUsers()" />
+                                    <svg class="w-5 h-5 text-text-secondary absolute left-3 top-1/2 transform -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <!-- Role Filter -->
+                            <div>
+                                <label class="form-label" for="roleFilter">Role</label>
+                                <select id="roleFilter" class="form-input focus-ring" onchange="filterUsers()">
+                                    <option value>All Roles</option>
+                                    <option value="laborer">Laborer</option>
+                                    <option value="contractor">Contractor</option>
+                                    <option value="homeowner">Homeowner</option>
+                                </select>
+                            </div>
+
+                            <!-- Status Filter -->
+                            <div>
+                                <label class="form-label" for="statusFilter">Status</label>
+                                <select id="statusFilter" class="form-input focus-ring" onchange="filterUsers()" aria-labelledby="statusFilterLabel">
+                                    <option value>All Status</option>
+                                    <option value="verified">Verified</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="suspended">Suspended</option>
+                                </select>
+                            </div>
+
+                            <!-- Activity Filter -->
+                            <div>
+                                <label class="form-label" id="activityFilterLabel" for="activityFilter">Activity</label>
+                                <select id="activityFilter" class="form-input focus-ring" onchange="filterUsers()" aria-labelledby="activityFilterLabel">
+                                    <option value>All Activity</option>
+                                    <option value="active">Active</option>
+                                    <option value="inactive">Inactive</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-between items-center mt-4 pt-4 border-t border-border">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-caption text-text-secondary">Show:</span>
+                                <label for="entriesPerPage" class="sr-only">Entries per page</label>
+                                <select id="entriesPerPage" class="form-input focus-ring text-caption py-1" onchange="updateEntriesPerPage()" title="Entries per page">
+                                    <option value="10">10</option>
+                                    <option value="25" selected>25</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select>
+                                <span class="text-caption text-text-secondary">entries</span>
+                            </div>
+                            <button onclick="resetFilters()" class="text-caption text-primary hover:underline">Reset Filters</button>
+                        </div>
+                    </div>
+
+                    <!-- Users Table -->
+                    <div class="card overflow-hidden">
+                        <!-- Table Header -->
+                        <div class="bg-secondary-50 px-6 py-3 border-b border-border">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <input type="checkbox" id="selectAll" class="rounded border-border text-primary focus:ring-primary" onchange="toggleSelectAll()" aria-label="Select all users" />
+                                    <label for="selectAll" class="sr-only">Select all users</label>
+                                    <span class="text-body font-medium text-text-primary">Users</span>
+                                    <span id="selectedCount" class="text-caption text-text-secondary hidden">(0 selected)</span>
+                                </div>
+                                <div class="text-caption text-text-secondary">
+                                    Showing <span id="showingStart">1</span>-<span id="showingEnd">25</span> of <span id="totalUsers">156</span> users
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Desktop Table -->
+                        <div class="hidden lg:block overflow-x-auto">
+                            <table class="w-full">
+                                <thead class="bg-secondary-50 border-b border-border">
+                                    <tr>
+                                        <th class="px-6 py-3 text-left">
+                                            <input type="checkbox" id="selectAllTable" class="rounded border-border text-primary focus:ring-primary" title="Select all users in table" />
+                                            <label for="selectAllTable" class="sr-only">Select all users in table</label>
+                                        </th>
+                                        <th class="px-6 py-3 text-left text-caption font-medium text-text-secondary uppercase tracking-wider">User</th>
+                                        <th class="px-6 py-3 text-left text-caption font-medium text-text-secondary uppercase tracking-wider">Role</th>
+                                        <th class="px-6 py-3 text-left text-caption font-medium text-text-secondary uppercase tracking-wider">Status</th>
+                                        <th class="px-6 py-3 text-left text-caption font-medium text-text-secondary uppercase tracking-wider">Registered</th>
+                                        <th class="px-6 py-3 text-left text-caption font-medium text-text-secondary uppercase tracking-wider">Activity</th>
+                                        <th class="px-6 py-3 text-left text-caption font-medium text-text-secondary uppercase tracking-wider">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="usersTableBody" class="bg-surface divide-y divide-border">
+                                    <!-- Users will be populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Mobile Cards -->
+                        <div id="mobileUserCards" class="lg:hidden divide-y divide-border">
+                            <!-- Mobile cards will be populated by JavaScript -->
+                        </div>
+
+                        <!-- Pagination -->
+                        <div class="bg-secondary-50 px-6 py-3 border-t border-border">
+                            <div class="flex items-center justify-between">
+                                <button id="prevPage" onclick="changePage(-1)" class="btn btn-secondary text-caption py-2 px-3" disabled>
+                                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                                    </svg>
+                                    Previous
+                                </button>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-caption text-text-secondary">Page</span>
+                                    <span id="currentPage" class="text-caption font-medium text-text-primary">1</span>
+                                    <span class="text-caption text-text-secondary">of</span>
+                                    <span id="totalPages" class="text-caption font-medium text-text-primary">7</span>
+                                </div>
+                                <button id="nextPage" onclick="changePage(1)" class="btn btn-secondary text-caption py-2 px-3">
+                                    Next
+                                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Panel - Statistics -->
+                <div class="w-80 space-y-6">
+                    <!-- User Statistics -->
+                    <div class="card p-6">
+                        <h3 class="text-heading-3 font-medium text-text-primary mb-4">User Statistics</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="text-body text-text-secondary">Total Users</span>
+                                <span class="text-body font-medium text-text-primary">1,247</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-body text-text-secondary">Verified</span>
+                                <span class="text-body font-medium text-success">1,089</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-body text-text-secondary">Pending</span>
+                                <span class="text-body font-medium text-warning">142</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-body text-text-secondary">Suspended</span>
+                                <span class="text-body font-medium text-error">16</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Role Distribution -->
+                    <div class="card p-6">
+                        <h3 class="text-heading-3 font-medium text-text-primary mb-4">Role Distribution</h3>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="text-body text-text-secondary">Laborers</span>
+                                    <span class="text-caption text-text-secondary">68%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill bg-accent" style="width: 68%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="text-body text-text-secondary">Contractors</span>
+                                    <span class="text-caption text-text-secondary">22%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill bg-primary" style="width: 22%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="text-body text-text-secondary">Homeowners</span>
+                                    <span class="text-caption text-text-secondary">10%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill bg-success" style="width: 10%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="card p-6">
+                        <h3 class="text-heading-3 font-medium text-text-primary mb-4">Recent Activity</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-success rounded-full mt-2"></div>
+                                <div>
+                                    <p class="text-caption text-text-primary">New user registered</p>
+                                    <p class="text-caption text-text-secondary">Maria Garcia - Laborer</p>
+                                    <p class="text-caption text-text-secondary">2 minutes ago</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-warning rounded-full mt-2"></div>
+                                <div>
+                                    <p class="text-caption text-text-primary">Verification pending</p>
+                                    <p class="text-caption text-text-secondary">BuildCorp Inc - Contractor</p>
+                                    <p class="text-caption text-text-secondary">15 minutes ago</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-primary rounded-full mt-2"></div>
+                                <div>
+                                    <p class="text-caption text-text-primary">Profile updated</p>
+                                    <p class="text-caption text-text-secondary">John Smith - Laborer</p>
+                                    <p class="text-caption text-text-secondary">1 hour ago</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="card p-6">
+                        <h3 class="text-heading-3 font-medium text-text-primary mb-4">Quick Actions</h3>
+                        <div class="space-y-2">
+                            <button onclick="openVerificationQueue()" class="w-full btn btn-primary text-left justify-start">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                Verification Queue (12)
+                            </button>
+                            <button onclick="openReportedUsers()" class="w-full btn btn-secondary text-left justify-start">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"/>
+                                </svg>
+                                Reported Users (3)
+                            </button>
+                            <button onclick="sendBroadcast()" class="w-full btn btn-secondary text-left justify-start">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/>
+                                </svg>
+                                Send Broadcast
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- User Detail Modal -->
+    <div id="userDetailModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div class="bg-surface rounded-lg max-w-2xl w-full max-h-screen overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-heading-2 font-medium text-text-primary">User Details</h3>
+                    <button onclick="closeUserModal()" class="text-text-secondary hover:text-text-primary" title="Close User Details" aria-label="Close User Details">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <div id="userDetailContent">
+                    <!-- User details will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bulk Actions Modal -->
+    <div id="bulkActionsModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div class="bg-surface rounded-lg max-w-md w-full">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-heading-3 font-medium text-text-primary">Bulk Actions</h3>
+                    <button onclick="closeBulkModal()" class="text-text-secondary hover:text-text-primary" title="Close Bulk Actions" aria-label="Close Bulk Actions">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <div class="space-y-4">
+                    <p class="text-body text-text-secondary">Select an action to perform on selected users:</p>
+                    <div class="space-y-2">
+                        <button onclick="bulkVerify()" class="w-full btn btn-primary text-left justify-start">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            Verify Users
+                        </button>
+                        <button onclick="bulkSuspend()" class="w-full btn btn-secondary text-left justify-start">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728L5.636 5.636m12.728 12.728L18.364 5.636M5.636 18.364l12.728-12.728"/>
+                            </svg>
+                            Suspend Users
+                        </button>
+                        <button onclick="bulkMessage()" class="w-full btn btn-secondary text-left justify-start">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                            </svg>
+                            Send Message
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mock user data
+        const mockUsers = [
+            {
+                id: 1,
+                name: "John Smith",
+                email: "john.smith@email.com",
+                phone: "(555) 123-4567",
+                role: "laborer",
+                status: "verified",
+                registeredDate: "2025-01-15",
+                lastActive: "2025-01-30",
+                skills: ["Plumbing", "Electrical"],
+                city: "New York, NY",
+                avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            },
+            {
+                id: 2,
+                name: "Maria Garcia",
+                email: "maria.garcia@email.com",
+                phone: "(555) 234-5678",
+                role: "laborer",
+                status: "pending",
+                registeredDate: "2025-01-28",
+                lastActive: "2025-01-31",
+                skills: ["Carpentry", "Painting"],
+                city: "Los Angeles, CA",
+                avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            },
+            {
+                id: 3,
+                name: "BuildCorp Inc",
+                email: "contact@buildcorp.com",
+                phone: "(555) 345-6789",
+                role: "contractor",
+                status: "verified",
+                registeredDate: "2025-01-10",
+                lastActive: "2025-01-30",
+                company: "BuildCorp Inc",
+                businessType: "General Contractor",
+                avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            },
+            {
+                id: 4,
+                name: "Sarah Johnson",
+                email: "sarah.johnson@email.com",
+                phone: "(555) 456-7890",
+                role: "homeowner",
+                status: "verified",
+                registeredDate: "2025-01-20",
+                lastActive: "2025-01-29",
+                avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            },
+            {
+                id: 5,
+                name: "Mike Wilson",
+                email: "mike.wilson@email.com",
+                phone: "(555) 567-8901",
+                role: "laborer",
+                status: "suspended",
+                registeredDate: "2025-01-05",
+                lastActive: "2025-01-25",
+                skills: ["Masonry", "Roofing"],
+                city: "Chicago, IL",
+                avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            }
+        ];
+
+        let currentPage = 1;
+        let entriesPerPage = 25;
+        let filteredUsers = [...mockUsers];
+        let selectedUsers = new Set();
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            renderUsers();
+            updatePagination();
+        });
+
+        // Filter users based on search and filters
+        function filterUsers() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const roleFilter = document.getElementById('roleFilter').value;
+            const statusFilter = document.getElementById('statusFilter').value;
+            const activityFilter = document.getElementById('activityFilter').value;
+
+            filteredUsers = mockUsers.filter(user => {
+                const matchesSearch = user.name.toLowerCase().includes(searchTerm) ||
+                                    user.email.toLowerCase().includes(searchTerm) ||
+                                    user.phone.includes(searchTerm);
+                const matchesRole = !roleFilter || user.role === roleFilter;
+                const matchesStatus = !statusFilter || user.status === statusFilter;
+                
+                // Simple activity check based on last active date
+                let matchesActivity = true;
+                if (activityFilter === 'active') {
+                    const lastActive = new Date(user.lastActive);
+                    const weekAgo = new Date();
+                    weekAgo.setDate(weekAgo.getDate() - 7);
+                    matchesActivity = lastActive > weekAgo;
+                } else if (activityFilter === 'inactive') {
+                    const lastActive = new Date(user.lastActive);
+                    const weekAgo = new Date();
+                    weekAgo.setDate(weekAgo.getDate() - 7);
+                    matchesActivity = lastActive <= weekAgo;
+                }
+
+                return matchesSearch && matchesRole && matchesStatus && matchesActivity;
+            });
+
+            currentPage = 1;
+            renderUsers();
+            updatePagination();
+        }
+
+        // Render users table
+        function renderUsers() {
+            const startIndex = (currentPage - 1) * entriesPerPage;
+            const endIndex = startIndex + entriesPerPage;
+            const usersToShow = filteredUsers.slice(startIndex, endIndex);
+
+            // Desktop table
+            const tableBody = document.getElementById('usersTableBody');
+            tableBody.innerHTML = '';
+
+            // Mobile cards
+            const mobileCards = document.getElementById('mobileUserCards');
+            mobileCards.innerHTML = '';
+
+            usersToShow.forEach(user => {
+                // Desktop row
+                const row = createUserRow(user);
+                tableBody.appendChild(row);
+
+                // Mobile card
+                const card = createUserCard(user);
+                mobileCards.appendChild(card);
+            });
+
+            // Update showing info
+            document.getElementById('showingStart').textContent = startIndex + 1;
+            document.getElementById('showingEnd').textContent = Math.min(endIndex, filteredUsers.length);
+            document.getElementById('totalUsers').textContent = filteredUsers.length;
+        }
+
+        // Create user table row
+        function createUserRow(user) {
+            const row = document.createElement('tr');
+            row.className = 'hover:bg-secondary-50 transition-smooth';
+            
+            const statusBadge = getStatusBadge(user.status);
+            const roleBadge = getRoleBadge(user.role);
+            const activityStatus = getActivityStatus(user.lastActive);
+
+            row.innerHTML = `
+                <td class="px-6 py-4">
+                    <input type="checkbox" class="rounded border-border text-primary focus:ring-primary user-checkbox" 
+                           data-user-id="${user.id}" onchange="updateSelectedUsers()">
+                </td>
+                <td class="px-6 py-4">
+                    <div class="flex items-center space-x-3">
+                        <img src="${user.avatar}" alt="${user.name}" class="w-10 h-10 rounded-full object-cover"
+                             onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
+                        <div>
+                            <div class="text-body font-medium text-text-primary">${user.name}</div>
+                            <div class="text-caption text-text-secondary">${user.email}</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="px-6 py-4">${roleBadge}</td>
+                <td class="px-6 py-4">${statusBadge}</td>
+                <td class="px-6 py-4">
+                    <div class="text-body text-text-primary">${formatDate(user.registeredDate)}</div>
+                </td>
+                <td class="px-6 py-4">${activityStatus}</td>
+                <td class="px-6 py-4">
+                    <div class="flex items-center space-x-2">
+                        <button onclick="viewUser(${user.id})" class="text-primary hover:text-primary-700 transition-smooth" title="View Details">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                            </svg>
+                        </button>
+                        ${user.status === 'pending' ? `
+                            <button onclick="verifyUser(${user.id})" class="text-success hover:text-success-600 transition-smooth" title="Verify User">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                            </button>
+                        ` : ''}
+                        <button onclick="messageUser(${user.id})" class="text-accent hover:text-accent-700 transition-smooth" title="Send Message">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                            </svg>
+                        </button>
+                        ${user.status !== 'suspended' ? `
+                            <button onclick="suspendUser(${user.id})" class="text-error hover:text-error-600 transition-smooth" title="Suspend User">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728L5.636 5.636m12.728 12.728L18.364 5.636M5.636 18.364l12.728-12.728"/>
+                                </svg>
+                            </button>
+                        ` : `
+                            <button onclick="unsuspendUser(${user.id})" class="text-success hover:text-success-600 transition-smooth" title="Unsuspend User">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                            </button>
+                        `}
+                    </div>
+                </td>
+            `;
+            return row;
+        }
+
+        // Create user mobile card
+        function createUserCard(user) {
+            const card = document.createElement('div');
+            card.className = 'p-4';
+            
+            const statusBadge = getStatusBadge(user.status);
+            const roleBadge = getRoleBadge(user.role);
+
+            card.innerHTML = `
+                <div class="flex items-start space-x-3">
+                    <input type="checkbox" class="mt-1 rounded border-border text-primary focus:ring-primary user-checkbox" 
+                           data-user-id="${user.id}" onchange="updateSelectedUsers()">
+                    <img src="${user.avatar}" alt="${user.name}" class="w-12 h-12 rounded-full object-cover"
+                         onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between">
+                            <h4 class="text-body font-medium text-text-primary truncate">${user.name}</h4>
+                            <div class="flex items-center space-x-1">
+                                ${roleBadge}
+                                ${statusBadge}
+                            </div>
+                        </div>
+                        <p class="text-caption text-text-secondary">${user.email}</p>
+                        <p class="text-caption text-text-secondary">${user.phone}</p>
+                        <p class="text-caption text-text-secondary mt-1">Registered: ${formatDate(user.registeredDate)}</p>
+                        <div class="flex items-center space-x-2 mt-2">
+                            <button onclick="viewUser(${user.id})" class="text-primary hover:text-primary-700 transition-smooth">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                </svg>
+                            </button>
+                            ${user.status === 'pending' ? `
+                                <button onclick="verifyUser(${user.id})" class="text-success hover:text-success-600 transition-smooth">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                </button>
+                            ` : ''}
+                            <button onclick="messageUser(${user.id})" class="text-accent hover:text-accent-700 transition-smooth">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                                </svg>
+                            </button>
+                            ${user.status !== 'suspended' ? `
+                                <button onclick="suspendUser(${user.id})" class="text-error hover:text-error-600 transition-smooth">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728L5.636 5.636m12.728 12.728L18.364 5.636M5.636 18.364l12.728-12.728"/>
+                                    </svg>
+                                </button>
+                            ` : `
+                                <button onclick="unsuspendUser(${user.id})" class="text-success hover:text-success-600 transition-smooth">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                </button>
+                            `}
+                        </div>
+                    </div>
+                </div>
+            `;
+            return card;
+        }
+
+        // Helper functions
+        function getStatusBadge(status) {
+            const badges = {
+                verified: '<span class="badge badge-success">Verified</span>',
+                pending: '<span class="badge badge-warning">Pending</span>',
+                suspended: '<span class="badge badge-error">Suspended</span>'
+            };
+            return badges[status] || '<span class="badge">Unknown</span>';
+        }
+
+        function getRoleBadge(role) {
+            const badges = {
+                laborer: '<span class="badge badge-primary">Laborer</span>',
+                contractor: '<span class="badge" style="background-color: var(--color-accent-100); color: var(--color-accent-600);">Contractor</span>',
+                homeowner: '<span class="badge" style="background-color: var(--color-success-100); color: var(--color-success-600);">Homeowner</span>'
+            };
+            return badges[role] || '<span class="badge">Unknown</span>';
+        }
+
+        function getActivityStatus(lastActive) {
+            const lastActiveDate = new Date(lastActive);
+            const now = new Date();
+            const diffDays = Math.floor((now - lastActiveDate) / (1000 * 60 * 60 * 24));
+            
+            if (diffDays === 0) {
+                return '<span class="text-success text-caption">Active today</span>';
+            } else if (diffDays <= 7) {
+                return `<span class="text-success text-caption">${diffDays} days ago</span>`;
+            } else if (diffDays <= 30) {
+                return `<span class="text-warning text-caption">${diffDays} days ago</span>`;
+            } else {
+                return `<span class="text-error text-caption">${diffDays} days ago</span>`;
+            }
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric' 
+            });
+        }
+
+        // Pagination functions
+        function updatePagination() {
+            const totalPages = Math.ceil(filteredUsers.length / entriesPerPage);
+            document.getElementById('currentPage').textContent = currentPage;
+            document.getElementById('totalPages').textContent = totalPages;
+            
+            document.getElementById('prevPage').disabled = currentPage === 1;
+            document.getElementById('nextPage').disabled = currentPage === totalPages;
+        }
+
+        function changePage(direction) {
+            const totalPages = Math.ceil(filteredUsers.length / entriesPerPage);
+            const newPage = currentPage + direction;
+            
+            if (newPage >= 1 && newPage <= totalPages) {
+                currentPage = newPage;
+                renderUsers();
+                updatePagination();
+            }
+        }
+
+        function updateEntriesPerPage() {
+            entriesPerPage = parseInt(document.getElementById('entriesPerPage').value);
+            currentPage = 1;
+            renderUsers();
+            updatePagination();
+        }
+
+        // Selection functions
+        function toggleSelectAll() {
+            const selectAll = document.getElementById('selectAll');
+            const checkboxes = document.querySelectorAll('.user-checkbox');
+            
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = selectAll.checked;
+            });
+            
+            updateSelectedUsers();
+        }
+
+        function updateSelectedUsers() {
+            const checkboxes = document.querySelectorAll('.user-checkbox:checked');
+            selectedUsers.clear();
+            
+            checkboxes.forEach(checkbox => {
+                selectedUsers.add(parseInt(checkbox.dataset.userId));
+            });
+            
+            const selectedCount = document.getElementById('selectedCount');
+            if (selectedUsers.size > 0) {
+                selectedCount.textContent = `(${selectedUsers.size} selected)`;
+                selectedCount.classList.remove('hidden');
+            } else {
+                selectedCount.classList.add('hidden');
+            }
+            
+            // Update select all checkbox
+            const selectAll = document.getElementById('selectAll');
+            const allCheckboxes = document.querySelectorAll('.user-checkbox');
+            selectAll.checked = allCheckboxes.length > 0 && checkboxes.length === allCheckboxes.length;
+        }
+
+        // Action functions
+        function viewUser(userId) {
+            const user = mockUsers.find(u => u.id === userId);
+            if (!user) return;
+            
+            const modalContent = document.getElementById('userDetailContent');
+            modalContent.innerHTML = `
+                <div class="flex items-center space-x-4 mb-6">
+                    <img src="${user.avatar}" alt="${user.name}" class="w-16 h-16 rounded-full object-cover"
+                         onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
+                    <div>
+                        <h4 class="text-heading-3 font-medium text-text-primary">${user.name}</h4>
+                        <div class="flex items-center space-x-2 mt-1">
+                            ${getRoleBadge(user.role)}
+                            ${getStatusBadge(user.status)}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h5 class="text-body font-medium text-text-primary mb-3">Contact Information</h5>
+                        <div class="space-y-2">
+                            <div>
+                                <span class="text-caption text-text-secondary">Email:</span>
+                                <p class="text-body text-text-primary">${user.email}</p>
+                            </div>
+                            <div>
+                                <span class="text-caption text-text-secondary">Phone:</span>
+                                <p class="text-body text-text-primary">${user.phone}</p>
+                            </div>
+                            ${user.city ? `
+                                <div>
+                                    <span class="text-caption text-text-secondary">City:</span>
+                                    <p class="text-body text-text-primary">${user.city}</p>
+                                </div>
+                            ` : ''}
+                            ${user.company ? `
+                                <div>
+                                    <span class="text-caption text-text-secondary">Company:</span>
+                                    <p class="text-body text-text-primary">${user.company}</p>
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h5 class="text-body font-medium text-text-primary mb-3">Account Details</h5>
+                        <div class="space-y-2">
+                            <div>
+                                <span class="text-caption text-text-secondary">Registered:</span>
+                                <p class="text-body text-text-primary">${formatDate(user.registeredDate)}</p>
+                            </div>
+                            <div>
+                                <span class="text-caption text-text-secondary">Last Active:</span>
+                                <p class="text-body text-text-primary">${formatDate(user.lastActive)}</p>
+                            </div>
+                            ${user.skills ? `
+                                <div>
+                                    <span class="text-caption text-text-secondary">Skills:</span>
+                                    <div class="flex flex-wrap gap-1 mt-1">
+                                        ${user.skills.map(skill => `<span class="badge badge-primary">${skill}</span>`).join('')}
+                                    </div>
+                                </div>
+                            ` : ''}
+                            ${user.businessType ? `
+                                <div>
+                                    <span class="text-caption text-text-secondary">Business Type:</span>
+                                    <p class="text-body text-text-primary">${user.businessType}</p>
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex justify-end space-x-3 mt-6 pt-6 border-t border-border">
+                    ${user.status === 'pending' ? `
+                        <button onclick="verifyUser(${user.id}); closeUserModal();" class="btn btn-primary">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            Verify User
+                        </button>
+                    ` : ''}
+                    <button onclick="messageUser(${user.id})" class="btn btn-secondary">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                        </svg>
+                        Send Message
+                    </button>
+                    ${user.status !== 'suspended' ? `
+                        <button onclick="suspendUser(${user.id}); closeUserModal();" class="btn btn-secondary text-error border-error hover:bg-error-50">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728L5.636 5.636m12.728 12.728L18.364 5.636M5.636 18.364l12.728-12.728"/>
+                            </svg>
+                            Suspend User
+                        </button>
+                    ` : `
+                        <button onclick="unsuspendUser(${user.id}); closeUserModal();" class="btn btn-secondary text-success border-success hover:bg-success-50">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            Unsuspend User
+                        </button>
+                    `}
+                </div>
+            `;
+            
+            document.getElementById('userDetailModal').classList.remove('hidden');
+        }
+
+        function closeUserModal() {
+            document.getElementById('userDetailModal').classList.add('hidden');
+        }
+
+        function verifyUser(userId) {
+            const userIndex = mockUsers.findIndex(u => u.id === userId);
+            if (userIndex !== -1) {
+                mockUsers[userIndex].status = 'verified';
+                renderUsers();
+                alert('User verified successfully!');
+            }
+        }
+
+        function suspendUser(userId) {
+            if (confirm('Are you sure you want to suspend this user?')) {
+                const userIndex = mockUsers.findIndex(u => u.id === userId);
+                if (userIndex !== -1) {
+                    mockUsers[userIndex].status = 'suspended';
+                    renderUsers();
+                    alert('User suspended successfully!');
+                }
+            }
+        }
+
+        function unsuspendUser(userId) {
+            const userIndex = mockUsers.findIndex(u => u.id === userId);
+            if (userIndex !== -1) {
+                mockUsers[userIndex].status = 'verified';
+                renderUsers();
+                alert('User unsuspended successfully!');
+            }
+        }
+
+        function messageUser(userId) {
+            const user = mockUsers.find(u => u.id === userId);
+            if (user) {
+                alert(`Message feature would open for ${user.name} (${user.email})`);
+            }
+        }
+
+        // Bulk actions
+        function openBulkActions() {
+            if (selectedUsers.size === 0) {
+                alert('Please select users first');
+                return;
+            }
+            document.getElementById('bulkActionsModal').classList.remove('hidden');
+        }
+
+        function closeBulkModal() {
+            document.getElementById('bulkActionsModal').classList.add('hidden');
+        }
+
+        function bulkVerify() {
+            selectedUsers.forEach(userId => {
+                const userIndex = mockUsers.findIndex(u => u.id === userId);
+                if (userIndex !== -1) {
+                    mockUsers[userIndex].status = 'verified';
+                }
+            });
+            renderUsers();
+            closeBulkModal();
+            alert(`${selectedUsers.size} users verified successfully!`);
+            selectedUsers.clear();
+            updateSelectedUsers();
+        }
+
+        function bulkSuspend() {
+            if (confirm(`Are you sure you want to suspend ${selectedUsers.size} users?`)) {
+                selectedUsers.forEach(userId => {
+                    const userIndex = mockUsers.findIndex(u => u.id === userId);
+                    if (userIndex !== -1) {
+                        mockUsers[userIndex].status = 'suspended';
+                    }
+                });
+                renderUsers();
+                closeBulkModal();
+                alert(`${selectedUsers.size} users suspended successfully!`);
+                selectedUsers.clear();
+                updateSelectedUsers();
+            }
+        }
+
+        function bulkMessage() {
+            alert(`Message feature would open for ${selectedUsers.size} selected users`);
+            closeBulkModal();
+        }
+
+        // Other functions
+        function resetFilters() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('roleFilter').value = '';
+            document.getElementById('statusFilter').value = '';
+            document.getElementById('activityFilter').value = '';
+            filterUsers();
+        }
+
+        function exportUsers() {
+            alert('Export functionality would download user data as CSV/Excel');
+        }
+
+        function openVerificationQueue() {
+            alert('Verification queue would show pending users');
+        }
+
+        function openReportedUsers() {
+            alert('Reported users management would open');
+        }
+
+        function sendBroadcast() {
+            alert('Broadcast message composer would open');
+        }
+
+        // Authentication Functions
+        function handleLogout() {
+        // Confirm logout action
+        if (confirm('Are you sure you want to sign out?')) {
+            // Clear all authentication data
+            localStorage.removeItem('skillconnect_user');
+            sessionStorage.removeItem('redirect_dashboard');
+            
+            // Clear any other session-related data
+            sessionStorage.clear();
+            
+            // Show logout message briefly
+            const logoutMessage = document.createElement('div');
+            logoutMessage.className = 'fixed top-4 right-4 bg-success text-white px-4 py-2 rounded-lg shadow-lg z-50';
+            logoutMessage.textContent = 'Successfully signed out';
+            document.body.appendChild(logoutMessage);
+            
+            // Redirect to login page after brief delay
+            setTimeout(() => {
+                window.location.href = 'user_login.html';
+            }, 1000);
+        }
+    }
+    </script>
+</body>
+</html>

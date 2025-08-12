@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Registration - SkillConnect</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fskillconne8915back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.6"></script>
+</head>
+<body class="bg-background min-h-screen">
+    <!-- Header -->
+    <header class="bg-surface border-b border-border shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="user_login.html" class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
+                            </svg>
+                        </div>
+                        <span class="text-heading-3 font-bold text-text-primary">SkillConnect</span>
+                    </a>
+                </div>
+                
+                <!-- Login Link -->
+                <div class="flex items-center">
+                    <a href="user_login.html" class="text-body text-text-secondary hover:text-primary transition-smooth">
+                        Already have an account? <span class="font-medium text-primary">Sign In</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 py-8 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-md mx-auto">
+            <!-- Registration Form Header -->
+            <div class="text-center mb-8">
+                <h1 class="text-heading-1 font-bold text-text-primary mb-2">Create Your Account</h1>
+                <p class="text-body text-text-secondary">Join SkillConnect and start connecting with opportunities</p>
+            </div>
+
+            <!-- Registration Form -->
+            <div class="card p-6 sm:p-8">
+                <form id="registrationForm" class="space-y-6">
+                    <!-- Role Selection -->
+                    <div>
+                        <label class="form-label">I am a:</label>
+                        <div class="grid grid-cols-1 gap-3 mt-2">
+                            <!-- Laborer Role -->
+                            <label class="relative cursor-pointer">
+                                <input type="radio" name="role" value="laborer" class="sr-only peer" required />
+                                <div class="card p-4 border-2 border-border peer-checked:border-primary peer-checked:bg-primary-50 hover:border-primary-300 transition-smooth">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-10 h-10 bg-accent-100 rounded-lg flex items-center justify-center">
+                                            <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd"/>
+                                                <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z"/>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h3 class="font-medium text-text-primary">Skilled Laborer</h3>
+                                            <p class="text-caption text-text-secondary">Find work opportunities</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <!-- Contractor Role -->
+                            <label class="relative cursor-pointer">
+                                <input type="radio" name="role" value="contractor" class="sr-only peer" required />
+                                <div class="card p-4 border-2 border-border peer-checked:border-primary peer-checked:bg-primary-50 hover:border-primary-300 transition-smooth">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center">
+                                            <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                                <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"/>
+                                                <path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd"/>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h3 class="font-medium text-text-primary">Contractor</h3>
+                                            <p class="text-caption text-text-secondary">Post jobs and hire talent</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <!-- Homeowner Role -->
+                            <label class="relative cursor-pointer">
+                                <input type="radio" name="role" value="homeowner" class="sr-only peer" required />
+                                <div class="card p-4 border-2 border-border peer-checked:border-primary peer-checked:bg-primary-50 hover:border-primary-300 transition-smooth">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-10 h-10 bg-success-100 rounded-lg flex items-center justify-center">
+                                            <svg class="w-6 h-6 text-success" fill="currentColor" viewBox="0 0 20 20">
+                                                <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h3 class="font-medium text-text-primary">Homeowner</h3>
+                                            <p class="text-caption text-text-secondary">Find home improvement services</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Common Fields -->
+                    <div class="space-y-4">
+                        <!-- Full Name -->
+                        <div>
+                            <label for="fullName" class="form-label">Full Name</label>
+                            <input type="text" id="fullName" name="fullName" class="form-input focus-ring" placeholder="Enter your full name" required />
+                            <div class="error-message hidden text-error text-caption mt-1"></div>
+                        </div>
+
+                        <!-- Email -->
+                        <div>
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" id="email" name="email" class="form-input focus-ring" placeholder="Enter your email" required />
+                            <div class="error-message hidden text-error text-caption mt-1"></div>
+                        </div>
+
+                        <!-- Phone Number -->
+                        <div>
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="form-input focus-ring" placeholder="(555) 123-4567" required />
+                            <div class="error-message hidden text-error text-caption mt-1"></div>
+                        </div>
+
+                        <!-- Password -->
+                        <div>
+                            <label for="password" class="form-label">Password</label>
+                            <div class="relative">
+                                <input type="password" id="password" name="password" class="form-input focus-ring pr-10" placeholder="Create a strong password" required />
+                                <button type="button" id="togglePassword" class="absolute inset-y-0 right-0 pr-3 flex items-center">
+                                    <svg class="w-5 h-5 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <!-- Password Strength Indicator -->
+                            <div class="mt-2">
+                                <div class="flex space-x-1">
+                                    <div class="h-1 flex-1 bg-secondary-200 rounded-full">
+                                        <div id="strength-bar" class="h-full bg-error rounded-full transition-all duration-300" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                                <p id="strength-text" class="text-caption text-text-secondary mt-1">Password strength: Weak</p>
+                            </div>
+                            <div class="error-message hidden text-error text-caption mt-1"></div>
+                        </div>
+                    </div>
+
+                    <!-- Role-Specific Fields -->
+                    <!-- Laborer Fields -->
+                    <div id="laborerFields" class="hidden space-y-4">
+                        <!-- Skills Selection -->
+                        <div>
+                            <label class="form-label">Skills</label>
+                            <div class="grid grid-cols-2 gap-2 mt-2">
+                                <label class="flex items-center space-x-2 cursor-pointer">
+                                    <input type="checkbox" name="skills" value="plumbing" class="rounded border-border text-primary focus:ring-primary" />
+                                    <span class="text-body">Plumbing</span>
+                                </label>
+                                <label class="flex items-center space-x-2 cursor-pointer">
+                                    <input type="checkbox" name="skills" value="electrical" class="rounded border-border text-primary focus:ring-primary" />
+                                    <span class="text-body">Electrical</span>
+                                </label>
+                                <label class="flex items-center space-x-2 cursor-pointer">
+                                    <input type="checkbox" name="skills" value="carpentry" class="rounded border-border text-primary focus:ring-primary" />
+                                    <span class="text-body">Carpentry</span>
+                                </label>
+                                <label class="flex items-center space-x-2 cursor-pointer">
+                                    <input type="checkbox" name="skills" value="masonry" class="rounded border-border text-primary focus:ring-primary" />
+                                    <span class="text-body">Masonry</span>
+                                </label>
+                                <label class="flex items-center space-x-2 cursor-pointer">
+                                    <input type="checkbox" name="skills" value="painting" class="rounded border-border text-primary focus:ring-primary" />
+                                    <span class="text-body">Painting</span>
+                                </label>
+                                <label class="flex items-center space-x-2 cursor-pointer">
+                                    <input type="checkbox" name="skills" value="roofing" class="rounded border-border text-primary focus:ring-primary" />
+                                    <span class="text-body">Roofing</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- City -->
+                        <div>
+                            <label for="city" class="form-label">City</label>
+                            <select id="city" name="city" class="form-input focus-ring">
+                                <option value>Select your city</option>
+                                <option value="new-york">New York, NY</option>
+                                <option value="los-angeles">Los Angeles, CA</option>
+                                <option value="chicago">Chicago, IL</option>
+                                <option value="houston">Houston, TX</option>
+                                <option value="phoenix">Phoenix, AZ</option>
+                                <option value="philadelphia">Philadelphia, PA</option>
+                                <option value="san-antonio">San Antonio, TX</option>
+                                <option value="san-diego">San Diego, CA</option>
+                                <option value="dallas">Dallas, TX</option>
+                                <option value="san-jose">San Jose, CA</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Contractor Fields -->
+                    <div id="contractorFields" class="hidden space-y-4">
+                        <!-- Company Name -->
+                        <div>
+                            <label for="companyName" class="form-label">Company Name</label>
+                            <input type="text" id="companyName" name="companyName" class="form-input focus-ring" placeholder="Enter your company name" />
+                        </div>
+
+                        <!-- Business Type -->
+                        <div>
+                            <label for="businessType" class="form-label">Business Type</label>
+                            <select id="businessType" name="businessType" class="form-input focus-ring">
+                                <option value>Select business type</option>
+                                <option value="general-contractor">General Contractor</option>
+                                <option value="construction-company">Construction Company</option>
+                                <option value="home-improvement">Home Improvement</option>
+                                <option value="specialty-contractor">Specialty Contractor</option>
+                                <option value="property-management">Property Management</option>
+                                <option value="real-estate">Real Estate</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Terms and Privacy -->
+                    <div class="flex items-start space-x-2">
+                        <input type="checkbox" id="terms" name="terms" class="mt-1 rounded border-border text-primary focus:ring-primary" required />
+                        <label for="terms" class="text-body text-text-secondary">
+                            I agree to the <a href="javascript:void(0)" class="text-primary hover:underline">Terms of Service</a> and 
+                            <a href="javascript:void(0)" class="text-primary hover:underline">Privacy Policy</a>
+                        </label>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" id="submitBtn" class="w-full btn btn-primary py-3 text-body font-medium">
+                        <span id="submitText">Create Account</span>
+                        <div id="submitSpinner" class="hidden spinner ml-2"></div>
+                    </button>
+                </form>
+
+                <!-- Trust Signals -->
+                <div class="mt-6 pt-6 border-t border-border">
+                    <div class="flex items-center justify-center space-x-4 text-caption text-text-secondary">
+                        <div class="flex items-center space-x-1">
+                            <svg class="w-4 h-4 text-success" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>SSL Secured</span>
+                        </div>
+                        <div class="flex items-center space-x-1">
+                            <svg class="w-4 h-4 text-success" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Privacy Protected</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Login Link -->
+            <div class="text-center mt-6">
+                <p class="text-body text-text-secondary">
+                    Already have an account? 
+                    <a href="user_login.html" class="text-primary font-medium hover:underline">Sign in here</a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div class="bg-surface rounded-lg p-6 max-w-sm w-full">
+            <div class="text-center">
+                <div class="w-12 h-12 bg-success-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-6 h-6 text-success" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                    </svg>
+                </div>
+                <h3 class="text-heading-3 font-medium text-text-primary mb-2">Account Created!</h3>
+                <p class="text-body text-text-secondary mb-4">Welcome to SkillConnect. You can now sign in to your account.</p>
+                <button onclick="closeSuccessModal()" class="btn btn-primary w-full">Continue to Sign In</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Role-based field visibility
+        const roleInputs = document.querySelectorAll('input[name="role"]');
+        const laborerFields = document.getElementById('laborerFields');
+        const contractorFields = document.getElementById('contractorFields');
+
+        roleInputs.forEach(input => {
+            input.addEventListener('change', function() {
+                laborerFields.classList.add('hidden');
+                contractorFields.classList.add('hidden');
+                
+                if (this.value === 'laborer') {
+                    laborerFields.classList.remove('hidden');
+                } else if (this.value === 'contractor') {
+                    contractorFields.classList.remove('hidden');
+                }
+            });
+        });
+
+        // Password visibility toggle
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+
+        togglePassword.addEventListener('click', function() {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            
+            const icon = this.querySelector('svg');
+            if (type === 'text') {
+                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L12 12m-3.122-3.122L12 12m0 0l3.878 3.878M12 12l3.878-3.878m-7.756 0L12 12"/>';
+            } else {
+                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>';
+            }
+        });
+
+        // Password strength indicator
+        const passwordStrength = document.getElementById('password');
+        const strengthBar = document.getElementById('strength-bar');
+        const strengthText = document.getElementById('strength-text');
+
+        passwordStrength.addEventListener('input', function() {
+            const password = this.value;
+            let strength = 0;
+            let strengthLabel = 'Weak';
+            let strengthColor = 'bg-error';
+
+            if (password.length >= 8) strength += 25;
+            if (/[a-z]/.test(password)) strength += 25;
+            if (/[A-Z]/.test(password)) strength += 25;
+            if (/[0-9]/.test(password)) strength += 25;
+
+            if (strength >= 75) {
+                strengthLabel = 'Strong';
+                strengthColor = 'bg-success';
+            } else if (strength >= 50) {
+                strengthLabel = 'Medium';
+                strengthColor = 'bg-warning';
+            }
+
+            strengthBar.style.width = strength + '%';
+            strengthBar.className = `h-full rounded-full transition-all duration-300 ${strengthColor}`;
+            strengthText.textContent = `Password strength: ${strengthLabel}`;
+        });
+
+        // Form submission
+        const registrationForm = document.getElementById('registrationForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const submitText = document.getElementById('submitText');
+        const submitSpinner = document.getElementById('submitSpinner');
+
+        registrationForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show loading state
+            submitText.textContent = 'Creating Account...';
+            submitSpinner.classList.remove('hidden');
+            submitBtn.disabled = true;
+
+            // Simulate API call
+            setTimeout(() => {
+                // Reset button state
+                submitText.textContent = 'Create Account';
+                submitSpinner.classList.add('hidden');
+                submitBtn.disabled = false;
+
+                // Show success modal
+                document.getElementById('successModal').classList.remove('hidden');
+            }, 2000);
+        });
+
+        // Success modal functions
+        function closeSuccessModal() {
+            document.getElementById('successModal').classList.add('hidden');
+            window.location.href = 'user_login.html';
+        }
+
+        // Phone number formatting
+        const phoneInput = document.getElementById('phone');
+        phoneInput.addEventListener('input', function() {
+            let value = this.value.replace(/\D/g, '');
+            if (value.length >= 6) {
+                value = `(${value.slice(0,3)}) ${value.slice(3,6)}-${value.slice(6,10)}`;
+            } else if (value.length >= 3) {
+                value = `(${value.slice(0,3)}) ${value.slice(3)}`;
+            }
+            this.value = value;
+        });
+
+        // Form validation
+        const inputs = document.querySelectorAll('.form-input');
+        inputs.forEach(input => {
+            input.addEventListener('blur', function() {
+                const errorDiv = this.parentNode.querySelector('.error-message');
+                if (this.validity.valid) {
+                    this.classList.remove('border-error');
+                    this.classList.add('border-success');
+                    if (errorDiv) errorDiv.classList.add('hidden');
+                } else {
+                    this.classList.remove('border-success');
+                    this.classList.add('border-error');
+                    if (errorDiv) {
+                        errorDiv.textContent = this.validationMessage;
+                        errorDiv.classList.remove('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

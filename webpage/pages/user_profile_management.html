@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile Management - SkillConnect</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fskillconne8915back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.6"></script>
+</head>
+<body class="bg-background min-h-screen">
+    <!-- Header -->
+    <header class="bg-surface border-b border-border shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="laborer_dashboard.html" class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
+                            </svg>
+                        </div>
+                        <span class="text-heading-3 font-bold text-text-primary">SkillConnect</span>
+                    </a>
+                </div>
+                
+                <!-- Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="laborer_dashboard.html" class="text-body text-text-secondary hover:text-primary transition-smooth">Dashboard</a>
+                    <a href="user_profile_management.html" class="text-body text-primary font-medium">Profile</a>
+                </nav>
+
+                <!-- User Menu -->
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <button id="userMenuBtn" class="flex items-center space-x-2 text-text-secondary hover:text-primary transition-smooth">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Profile" class="w-8 h-8 rounded-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                            <span class="hidden sm:block text-body">John Smith</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        
+                        <!-- Dropdown Menu -->
+                        <div id="userMenu" class="hidden absolute right-0 mt-2 w-48 bg-surface rounded-lg shadow-lg border border-border z-50">
+                            <div class="py-1">
+                                <a href="user_profile_management.html" class="block px-4 py-2 text-body text-text-primary hover:bg-secondary-50">Profile Settings</a>
+                                <button onclick="handleLogout()" class="text-text-secondary hover:text-error transition-smooth" title="Logout" aria-label="Logout">
+                                <!-- <a href="user_login.html" class="block px-4 py-2 text-body text-text-primary hover:bg-secondary-50">Sign Out</a> -->
+                                <a href="user_login.html" class="flex items-center px-4 py-2 text-body text-text-secondary hover:bg-secondary-50 hover:text-error transition-smooth">
+                                    <svg class="w-4 h-4 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                                    </svg>
+                                    Sign Out
+                                </a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Page Header -->
+        <div class="mb-8">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-heading-1 font-bold text-text-primary">Profile Management</h1>
+                    <p class="text-body text-text-secondary mt-1">Manage your professional information and preferences</p>
+                </div>
+                
+                <!-- Profile Completion -->
+                <div class="hidden sm:block">
+                    <div class="text-right mb-2">
+                        <span class="text-caption text-text-secondary">Profile Completion</span>
+                        <span class="text-body font-medium text-primary ml-2">75%</span>
+                    </div>
+                    <div class="progress-bar w-32">
+                        <div class="progress-fill" style="width: 75%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="lg:grid lg:grid-cols-4 lg:gap-8">
+            <!-- Sidebar Navigation (Desktop) -->
+            <div class="lg:col-span-1">
+                <nav class="hidden lg:block space-y-1">
+                    <button class="tab-btn active w-full text-left px-4 py-3 rounded-lg text-body font-medium transition-smooth" data-tab="personal">
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                            </svg>
+                            <span>Personal Info</span>
+                        </div>
+                    </button>
+                    <button class="tab-btn w-full text-left px-4 py-3 rounded-lg text-body font-medium transition-smooth" data-tab="skills">
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                            </svg>
+                            <span>Skills & Experience</span>
+                        </div>
+                    </button>
+                    <button class="tab-btn w-full text-left px-4 py-3 rounded-lg text-body font-medium transition-smooth" data-tab="preferences">
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                            <span>Preferences</span>
+                        </div>
+                    </button>
+                    <button class="tab-btn w-full text-left px-4 py-3 rounded-lg text-body font-medium transition-smooth" data-tab="account">
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                            </svg>
+                            <span>Account Settings</span>
+                        </div>
+                    </button>
+                </nav>
+
+                <!-- Mobile Tab Navigation -->
+                <div class="lg:hidden mb-6">
+                    <select id="mobileTabSelect" class="form-input focus-ring">
+                        <option value="personal">Personal Info</option>
+                        <option value="skills">Skills & Experience</option>
+                        <option value="preferences">Preferences</option>
+                        <option value="account">Account Settings</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="lg:col-span-3">
+                <!-- Personal Info Tab -->
+                <div id="personalTab" class="tab-content">
+                    <div class="card p-6">
+                        <div class="flex items-center justify-between mb-6">
+                            <h2 class="text-heading-2 font-semibold text-text-primary">Personal Information</h2>
+                            <button class="btn btn-primary">Save Changes</button>
+                        </div>
+
+                        <form class="space-y-6">
+                            <!-- Profile Photo -->
+                            <div class="flex items-start space-x-6">
+                                <div class="flex-shrink-0">
+                                    <div class="relative">
+                                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Profile Photo" class="w-24 h-24 rounded-full object-cover border-4 border-border" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                                        <button class="absolute bottom-0 right-0 w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white hover:bg-primary-700 transition-smooth">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="text-body font-medium text-text-primary mb-2">Profile Photo</h3>
+                                    <p class="text-caption text-text-secondary mb-4">Upload a professional photo to help clients recognize you</p>
+                                    <div class="flex space-x-3">
+                                        <button type="button" class="btn btn-secondary text-caption">Change Photo</button>
+                                        <button type="button" class="btn btn-secondary text-caption text-error">Remove</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Basic Information -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="firstName" class="form-label">First Name</label>
+                                    <input type="text" id="firstName" name="firstName" value="John" class="form-input focus-ring" required />
+                                </div>
+                                <div>
+                                    <label for="lastName" class="form-label">Last Name</label>
+                                    <input type="text" id="lastName" name="lastName" value="Smith" class="form-input focus-ring" required />
+                                </div>
+                            </div>
+
+                            <!-- Contact Information -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="email" class="form-label">Email Address</label>
+                                    <input type="email" id="email" name="email" value="john.smith@email.com" class="form-input focus-ring" required />
+                                </div>
+                                <div>
+                                    <label for="phone" class="form-label">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone" value="(555) 123-4567" class="form-input focus-ring" required />
+                                </div>
+                            </div>
+
+                            <!-- Location -->
+                            <div class="space-y-4">
+                                <h3 class="text-body font-medium text-text-primary">Location</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label for="city" class="form-label">City</label>
+                                        <select id="city" name="city" class="form-input focus-ring">
+                                            <option value="new-york" selected>New York, NY</option>
+                                            <option value="los-angeles">Los Angeles, CA</option>
+                                            <option value="chicago">Chicago, IL</option>
+                                            <option value="houston">Houston, TX</option>
+                                            <option value="phoenix">Phoenix, AZ</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="workRadius" class="form-label">Work Radius (miles)</label>
+                                        <select id="workRadius" name="workRadius" class="form-input focus-ring">
+                                            <option value="10">10 miles</option>
+                                            <option value="25" selected>25 miles</option>
+                                            <option value="50">50 miles</option>
+                                            <option value="100">100 miles</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <!-- Privacy Controls -->
+                                <div class="flex items-center space-x-2">
+                                    <input type="checkbox" id="shareLocation" name="shareLocation" checked class="rounded border-border text-primary focus:ring-primary" />
+                                    <label for="shareLocation" class="text-body text-text-secondary">Share my location with potential clients</label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Skills & Experience Tab -->
+                <div id="skillsTab" class="tab-content hidden">
+                    <div class="space-y-6">
+                        <!-- Skills Section -->
+                        <div class="card p-6">
+                            <div class="flex items-center justify-between mb-6">
+                                <h2 class="text-heading-2 font-semibold text-text-primary">Skills & Expertise</h2>
+                                <button class="btn btn-secondary">Add Skill</button>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- Skill Item -->
+                                <div class="border border-border rounded-lg p-4">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <h3 class="text-body font-medium text-text-primary">Plumbing</h3>
+                                        <span class="badge badge-success">Expert</span>
+                                    </div>
+                                    <div class="space-y-2">
+                                        <div class="flex justify-between text-caption">
+                                            <span>Proficiency Level</span>
+                                            <span>90%</span>
+                                        </div>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 90%"></div>
+                                        </div>
+                                    </div>
+                                    <p class="text-caption text-text-secondary mt-2">8 years experience</p>
+                                </div>
+
+                                <div class="border border-border rounded-lg p-4">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <h3 class="text-body font-medium text-text-primary">Electrical</h3>
+                                        <span class="badge badge-warning">Intermediate</span>
+                                    </div>
+                                    <div class="space-y-2">
+                                        <div class="flex justify-between text-caption">
+                                            <span>Proficiency Level</span>
+                                            <span>65%</span>
+                                        </div>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 65%"></div>
+                                        </div>
+                                    </div>
+                                    <p class="text-caption text-text-secondary mt-2">3 years experience</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Certifications -->
+                        <div class="card p-6">
+                            <div class="flex items-center justify-between mb-6">
+                                <h2 class="text-heading-2 font-semibold text-text-primary">Certifications</h2>
+                                <button class="btn btn-secondary">Add Certificate</button>
+                            </div>
+
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between p-4 border border-border rounded-lg">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="w-12 h-12 bg-success-100 rounded-lg flex items-center justify-center">
+                                            <svg class="w-6 h-6 text-success" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-body font-medium text-text-primary">Licensed Plumber</h3>
+                                            <p class="text-caption text-text-secondary">State of New York • Expires: Dec 2025</p>
+                                        </div>
+                                    </div>
+                                    <span class="badge badge-success">Active</span>
+                                </div>
+
+                                <div class="flex items-center justify-between p-4 border border-border rounded-lg">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="w-12 h-12 bg-warning-100 rounded-lg flex items-center justify-center">
+                                            <svg class="w-6 h-6 text-warning" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-body font-medium text-text-primary">OSHA Safety Training</h3>
+                                            <p class="text-caption text-text-secondary">30-Hour Construction • Expires: Mar 2025</p>
+                                        </div>
+                                    </div>
+                                    <span class="badge badge-warning">Expiring Soon</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Availability Calendar -->
+                        <div class="card p-6">
+                            <h2 class="text-heading-2 font-semibold text-text-primary mb-6">Availability</h2>
+                            
+                            <div class="space-y-4">
+                                <div class="flex items-center space-x-2">
+                                    <input type="checkbox" id="availableNow" name="availableNow" checked class="rounded border-border text-primary focus:ring-primary" />
+                                    <label for="availableNow" class="text-body text-text-primary font-medium">Available for new projects</label>
+                                </div>
+
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    <div class="text-center p-3 border border-border rounded-lg">
+                                        <div class="text-caption text-text-secondary mb-1">This Week</div>
+                                        <div class="text-body font-medium text-success">Available</div>
+                                    </div>
+                                    <div class="text-center p-3 border border-border rounded-lg">
+                                        <div class="text-caption text-text-secondary mb-1">Next Week</div>
+                                        <div class="text-body font-medium text-warning">Partial</div>
+                                    </div>
+                                    <div class="text-center p-3 border border-border rounded-lg">
+                                        <div class="text-caption text-text-secondary mb-1">Aug 12-18</div>
+                                        <div class="text-body font-medium text-error">Booked</div>
+                                    </div>
+                                    <div class="text-center p-3 border border-border rounded-lg">
+                                        <div class="text-caption text-text-secondary mb-1">Aug 19-25</div>
+                                        <div class="text-body font-medium text-success">Available</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Preferences Tab -->
+                <div id="preferencesTab" class="tab-content hidden">
+                    <div class="space-y-6">
+                        <!-- Notification Settings -->
+                        <div class="card p-6">
+                            <h2 class="text-heading-2 font-semibold text-text-primary mb-6">Notification Preferences</h2>
+                            
+                            <div class="space-y-6">
+                                <div>
+                                    <h3 class="text-body font-medium text-text-primary mb-4">Job Notifications</h3>
+                                    <div class="space-y-3">
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <label class="text-body text-text-primary">New job matches</label>
+                                                <p class="text-caption text-text-secondary">Get notified when jobs match your skills</p>
+                                            </div>
+                                            <input type="checkbox" checked class="rounded border-border text-primary focus:ring-primary" />
+                                        </div>
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <label class="text-body text-text-primary">Job updates</label>
+                                                <p class="text-caption text-text-secondary">Updates on jobs you've applied to</p>
+                                            </div>
+                                            <input type="checkbox" checked class="rounded border-border text-primary focus:ring-primary" />
+                                        </div>
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <label class="text-body text-text-primary">Weekly job digest</label>
+                                                <p class="text-caption text-text-secondary">Summary of new opportunities</p>
+                                            </div>
+                                            <input type="checkbox" class="rounded border-border text-primary focus:ring-primary" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <h3 class="text-body font-medium text-text-primary mb-4">Communication</h3>
+                                    <div class="space-y-3">
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <label class="text-body text-text-primary">SMS notifications</label>
+                                                <p class="text-caption text-text-secondary">Receive urgent updates via text</p>
+                                            </div>
+                                            <input type="checkbox" checked class="rounded border-border text-primary focus:ring-primary" />
+                                        </div>
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <label class="text-body text-text-primary">Email notifications</label>
+                                                <p class="text-caption text-text-secondary">Receive updates via email</p>
+                                            </div>
+                                            <input type="checkbox" checked class="rounded border-border text-primary focus:ring-primary" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Job Matching Criteria -->
+                        <div class="card p-6">
+                            <h2 class="text-heading-2 font-semibold text-text-primary mb-6">Job Matching Preferences</h2>
+                            
+                            <div class="space-y-6">
+                                <div>
+                                    <label for="minPayRate" class="form-label">Minimum Pay Rate (per hour)</label>
+                                    <div class="relative">
+                                        <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-text-secondary">$</span>
+                                        <input type="number" id="minPayRate" name="minPayRate" value="25" class="form-input focus-ring pl-8" min="0" step="0.50" />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label for="jobTypes" class="form-label">Preferred Job Types</label>
+                                    <div class="grid grid-cols-2 gap-3 mt-2">
+                                        <label class="flex items-center space-x-2 cursor-pointer">
+                                            <input type="checkbox" name="jobTypes" value="residential" checked class="rounded border-border text-primary focus:ring-primary" />
+                                            <span class="text-body">Residential</span>
+                                        </label>
+                                        <label class="flex items-center space-x-2 cursor-pointer">
+                                            <input type="checkbox" name="jobTypes" value="commercial" class="rounded border-border text-primary focus:ring-primary" />
+                                            <span class="text-body">Commercial</span>
+                                        </label>
+                                        <label class="flex items-center space-x-2 cursor-pointer">
+                                            <input type="checkbox" name="jobTypes" value="emergency" checked class="rounded border-border text-primary focus:ring-primary" />
+                                            <span class="text-body">Emergency</span>
+                                        </label>
+                                        <label class="flex items-center space-x-2 cursor-pointer">
+                                            <input type="checkbox" name="jobTypes" value="maintenance" class="rounded border-border text-primary focus:ring-primary" />
+                                            <span class="text-body">Maintenance</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label for="workSchedule" class="form-label">Preferred Work Schedule</label>
+                                    <select id="workSchedule" name="workSchedule" class="form-input focus-ring">
+                                        <option value="flexible" selected>Flexible</option>
+                                        <option value="weekdays">Weekdays Only</option>
+                                        <option value="weekends">Weekends Only</option>
+                                        <option value="evenings">Evenings</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Account Settings Tab -->
+                <div id="accountTab" class="tab-content hidden">
+                    <div class="space-y-6">
+                        <!-- Password Change -->
+                        <div class="card p-6">
+                            <h2 class="text-heading-2 font-semibold text-text-primary mb-6">Change Password</h2>
+                            
+                            <form class="space-y-4">
+                                <div>
+                                    <label for="currentPassword" class="form-label">Current Password</label>
+                                    <input type="password" id="currentPassword" name="currentPassword" class="form-input focus-ring" required />
+                                </div>
+                                <div>
+                                    <label for="newPassword" class="form-label">New Password</label>
+                                    <input type="password" id="newPassword" name="newPassword" class="form-input focus-ring" required />
+                                </div>
+                                <div>
+                                    <label for="confirmPassword" class="form-label">Confirm New Password</label>
+                                    <input type="password" id="confirmPassword" name="confirmPassword" class="form-input focus-ring" required />
+                                </div>
+                                <button type="submit" class="btn btn-primary">Update Password</button>
+                            </form>
+                        </div>
+
+                        <!-- Privacy Settings -->
+                        <div class="card p-6">
+                            <h2 class="text-heading-2 font-semibold text-text-primary mb-6">Privacy Settings</h2>
+                            
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <label class="text-body text-text-primary">Profile visibility</label>
+                                        <p class="text-caption text-text-secondary">Allow contractors to find your profile</p>
+                                    </div>
+                                    <input type="checkbox" checked class="rounded border-border text-primary focus:ring-primary" />
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <label class="text-body text-text-primary">Show contact information</label>
+                                        <p class="text-caption text-text-secondary">Display phone number on profile</p>
+                                    </div>
+                                    <input type="checkbox" checked class="rounded border-border text-primary focus:ring-primary" />
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <label class="text-body text-text-primary">Show work history</label>
+                                        <p class="text-caption text-text-secondary">Display previous projects and ratings</p>
+                                    </div>
+                                    <input type="checkbox" checked class="rounded border-border text-primary focus:ring-primary" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Account Actions -->
+                        <div class="card p-6">
+                            <h2 class="text-heading-2 font-semibold text-text-primary mb-6">Account Actions</h2>
+                            
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between p-4 border border-border rounded-lg">
+                                    <div>
+                                        <h3 class="text-body font-medium text-text-primary">Download your data</h3>
+                                        <p class="text-caption text-text-secondary">Get a copy of your profile and activity data</p>
+                                    </div>
+                                    <button class="btn btn-secondary">Download</button>
+                                </div>
+                                
+                                <div class="flex items-center justify-between p-4 border border-error rounded-lg bg-error-50">
+                                    <div>
+                                        <h3 class="text-body font-medium text-error">Deactivate account</h3>
+                                        <p class="text-caption text-text-secondary">Temporarily disable your account</p>
+                                    </div>
+                                    <button class="btn btn-secondary text-error border-error hover:bg-error-50">Deactivate</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Tab functionality
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        const mobileTabSelect = document.getElementById('mobileTabSelect');
+
+        function showTab(tabId) {
+            // Hide all tab contents
+            tabContents.forEach(content => {
+                content.classList.add('hidden');
+            });
+            
+            // Remove active class from all buttons
+            tabButtons.forEach(btn => {
+                btn.classList.remove('active', 'bg-primary-50', 'text-primary');
+                btn.classList.add('text-text-secondary', 'hover:bg-secondary-50');
+            });
+            
+            // Show selected tab content
+            const selectedTab = document.getElementById(tabId + 'Tab');
+            if (selectedTab) {
+                selectedTab.classList.remove('hidden');
+            }
+            
+            // Add active class to selected button
+            const selectedBtn = document.querySelector(`[data-tab="${tabId}"]`);
+            if (selectedBtn) {
+                selectedBtn.classList.add('active', 'bg-primary-50', 'text-primary');
+                selectedBtn.classList.remove('text-text-secondary', 'hover:bg-secondary-50');
+            }
+        }
+
+        // Desktop tab buttons
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const tabId = button.getAttribute('data-tab');
+                showTab(tabId);
+                mobileTabSelect.value = tabId;
+            });
+        });
+
+        // Mobile tab select
+        mobileTabSelect.addEventListener('change', (e) => {
+            showTab(e.target.value);
+        });
+
+        // User menu dropdown
+        const userMenuBtn = document.getElementById('userMenuBtn');
+        const userMenu = document.getElementById('userMenu');
+
+        userMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            userMenu.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', () => {
+            userMenu.classList.add('hidden');
+        });
+
+        // Initialize with personal tab
+        showTab('personal');
+
+        // Form validation and saving
+        const forms = document.querySelectorAll('form');
+        forms.forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Show success message
+                const button = form.querySelector('button[type="submit"]');
+                const originalText = button.textContent;
+                button.textContent = 'Saving...';
+                button.disabled = true;
+                
+                setTimeout(() => {
+                    button.textContent = 'Saved!';
+                    button.classList.add('bg-success', 'hover:bg-success');
+                    button.classList.remove('bg-primary', 'hover:bg-primary-700');
+                    
+                    setTimeout(() => {
+                        button.textContent = originalText;
+                        button.disabled = false;
+                        button.classList.remove('bg-success', 'hover:bg-success');
+                        button.classList.add('bg-primary', 'hover:bg-primary-700');
+                    }, 2000);
+                }, 1000);
+            });
+        });
+
+        // Phone number formatting
+        const phoneInput = document.getElementById('phone');
+        if (phoneInput) {
+            phoneInput.addEventListener('input', function() {
+                let value = this.value.replace(/\D/g, '');
+                if (value.length >= 6) {
+                    value = `(${value.slice(0,3)}) ${value.slice(3,6)}-${value.slice(6,10)}`;
+                } else if (value.length >= 3) {
+                    value = `(${value.slice(0,3)}) ${value.slice(3)}`;
+                }
+                this.value = value;
+            });
+        }
+
+        // Profile completion calculation
+        function updateProfileCompletion() {
+            const requiredFields = document.querySelectorAll('input[required], select[required]');
+            let completedFields = 0;
+            
+            requiredFields.forEach(field => {
+                if (field.value.trim() !== '') {
+                    completedFields++;
+                }
+            });
+            
+            const completionPercentage = Math.round((completedFields / requiredFields.length) * 100);
+            
+            const progressBar = document.querySelector('.progress-fill');
+            const progressText = document.querySelector('.text-primary');
+            
+            if (progressBar && progressText) {
+                progressBar.style.width = completionPercentage + '%';
+                progressText.textContent = completionPercentage + '%';
+            }
+        }
+
+        // Authentication Functions
+        function handleLogout() {
+        // Confirm logout action
+        if (confirm('Are you sure you want to sign out?')) {
+            // Clear all authentication data
+            localStorage.removeItem('skillconnect_user');
+            sessionStorage.removeItem('redirect_dashboard');
+            
+            // Clear any other session-related data
+            sessionStorage.clear();
+            
+            // Show logout message briefly
+            const logoutMessage = document.createElement('div');
+            logoutMessage.className = 'fixed top-4 right-4 bg-success text-white px-4 py-2 rounded-lg shadow-lg z-50';
+            logoutMessage.textContent = 'Successfully signed out';
+            document.body.appendChild(logoutMessage);
+            
+            // Redirect to login page after brief delay
+            setTimeout(() => {
+                window.location.href = 'user_login.html';
+            }, 1000);
+        }
+    }
+
+        // Update completion on field changes
+        const allInputs = document.querySelectorAll('input, select');
+        allInputs.forEach(input => {
+            input.addEventListener('change', updateProfileCompletion);
+        });
+
+        // Initialize completion calculation
+        updateProfileCompletion();
+    </script>
+</body>
+</html>

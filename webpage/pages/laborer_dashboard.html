@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - SkillConnect</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fskillconne8915back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.6"></script>
+</head>
+<body class="bg-background min-h-screen">
+    <!-- Header -->
+    <header class="bg-surface border-b border-border shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="laborer_dashboard.html" class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
+                            </svg>
+                        </div>
+                        <span class="text-heading-3 font-bold text-text-primary">SkillConnect</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-6">
+                    <a href="laborer_dashboard.html" class="text-body font-medium text-primary">Dashboard</a>
+                    <a href="user_profile_management.html" class="text-body text-text-secondary hover:text-primary transition-smooth">Profile</a>
+                </nav>
+
+                <!-- Header Actions -->
+                <div class="flex items-center space-x-3">
+                    <!-- Notifications -->
+                    <button class="relative p-2 text-text-secondary hover:text-primary transition-smooth">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5 5v-5zM10.5 3.75a6 6 0 0 1 6 6v2.25l2.25 2.25v2.25H2.25V14.25L4.5 12V9.75a6 6 0 0 1 6-6z"/>
+                        </svg>
+                        <span class="absolute -top-1 -right-1 w-3 h-3 bg-error rounded-full"></span>
+                    </button>
+
+                    <!-- Settings -->
+                    <button class="p-2 text-text-secondary hover:text-primary transition-smooth">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                    </button>
+
+                    <!-- Profile Menu -->
+                    <div class="relative">
+                        <button id="profileMenuBtn" class="flex items-center space-x-2 p-1 rounded-lg hover:bg-secondary-50 transition-smooth">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Profile" class="w-8 h-8 rounded-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                            <span class="hidden sm:block text-body font-medium text-text-primary">Mike Rodriguez</span>
+                            <svg class="w-4 h-4 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+
+                        <!-- Profile Dropdown -->
+                        <div id="profileMenu" class="hidden absolute right-0 mt-2 w-48 bg-surface rounded-lg shadow-lg border border-border z-50">
+                            <div class="py-1">
+                                <a href="user_profile_management.html" class="flex items-center px-4 py-2 text-body text-text-secondary hover:bg-secondary-50 hover:text-primary transition-smooth">
+                                    <svg class="w-4 h-4 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                                    </svg>
+                                    Profile Settings
+                                </a>
+                                <button onclick="handleLogout()" class="text-text-secondary hover:text-error transition-smooth" title="Logout" aria-label="Logout">
+                                <a href="user_login.html" class="flex items-center px-4 py-2 text-body text-text-secondary hover:bg-secondary-50 hover:text-error transition-smooth">
+                                    <svg class="w-4 h-4 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                                    </svg>
+                                    Sign Out
+                                </a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 pb-20 md:pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <!-- Welcome Section -->
+            <div class="mb-6">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                    <div>
+                        <h1 class="text-heading-1 font-bold text-text-primary">Good morning, Mike!</h1>
+                        <p class="text-body text-text-secondary mt-1">Ready to find your next opportunity?</p>
+                    </div>
+                    
+                    <!-- Availability Toggle -->
+                    <div class="flex items-center space-x-3">
+                        <span class="text-body text-text-secondary">Available for work</span>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" id="availabilityToggle" class="sr-only peer" checked />
+                            <div class="w-11 h-6 bg-secondary-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-100 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-secondary-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-success"></div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                <div class="card p-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-heading-3 font-bold text-text-primary">12</p>
+                            <p class="text-caption text-text-secondary">Applications</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-accent-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-heading-3 font-bold text-text-primary">3</p>
+                            <p class="text-caption text-text-secondary">Interviews</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-success-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-success" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"/>
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-heading-3 font-bold text-text-primary">$2,840</p>
+                            <p class="text-caption text-text-secondary">This Month</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-warning-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-warning" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-heading-3 font-bold text-text-primary">4.8</p>
+                            <p class="text-caption text-text-secondary">Rating</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desktop Layout -->
+            <div class="lg:grid lg:grid-cols-12 lg:gap-6">
+                <!-- Job Feed Section -->
+                <div class="lg:col-span-8">
+                    <!-- Filter Section -->
+                    <div class="mb-6">
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <button class="btn btn-primary text-caption px-3 py-2">All Jobs</button>
+                            <button class="btn btn-secondary text-caption px-3 py-2">Nearby</button>
+                            <button class="btn btn-secondary text-caption px-3 py-2">High Pay</button>
+                            <button class="btn btn-secondary text-caption px-3 py-2">Urgent</button>
+                            <button class="btn btn-secondary text-caption px-3 py-2 flex items-center">
+                                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/>
+                                </svg>
+                                Filters
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Job Cards -->
+                    <div class="space-y-4" id="jobFeed">
+                        <!-- Job Card 1 -->
+                        <div class="card p-6 hover-lift cursor-pointer job-card" data-job-id="1">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="flex-1">
+                                    <div class="flex items-center space-x-2 mb-2">
+                                        <h3 class="text-heading-3 font-bold text-text-primary">Kitchen Renovation - Plumbing</h3>
+                                        <span class="badge badge-success">New</span>
+                                    </div>
+                                    <p class="text-body text-text-secondary mb-2">HomeMax Construction</p>
+                                    <div class="flex items-center space-x-4 text-caption text-text-secondary">
+                                        <div class="flex items-center space-x-1">
+                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                                            </svg>
+                                            <span>2.3 miles away</span>
+                                        </div>
+                                        <div class="flex items-center space-x-1">
+                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd"/>
+                                            </svg>
+                                            <span>$45/hour</span>
+                                        </div>
+                                        <div class="flex items-center space-x-1">
+                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                                            </svg>
+                                            <span>Posted 2 hours ago</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="p-2 text-text-secondary hover:text-primary transition-smooth">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <div class="mb-4">
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="badge badge-primary">Plumbing</span>
+                                    <span class="badge badge-primary">Kitchen</span>
+                                    <span class="badge badge-primary">Residential</span>
+                                </div>
+                            </div>
+
+                            <p class="text-body text-text-secondary mb-4">Complete kitchen renovation requiring experienced plumber for sink installation, dishwasher hookup, and water line modifications. 3-day project starting Monday.</p>
+
+                            <div class="flex space-x-3">
+                                <button class="btn btn-primary flex-1">Apply Now</button>
+                                <button class="btn btn-secondary px-4">Save</button>
+                            </div>
+                        </div>
+
+                        <!-- Job Card 2 -->
+                        <div class="card p-6 hover-lift cursor-pointer job-card" data-job-id="2">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="flex-1">
+                                    <div class="flex items-center space-x-2 mb-2">
+                                        <h3 class="text-heading-3 font-bold text-text-primary">Bathroom Tile Installation</h3>
+                                        <span class="badge badge-warning">Urgent</span>
+                                    </div>
+                                    <p class="text-body text-text-secondary mb-2">Elite Home Services</p>
+                                    <div class="flex items-center space-x-4 text-caption text-text-secondary">
+                                        <div class="flex items-center space-x-1">
+                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                                            </svg>
+                                            <span>1.8 miles away</span>
+                                        </div>
+                                        <div class="flex items-center space-x-1">
+                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd"/>
+                                            </svg>
+                                            <span>$38/hour</span>
+                                        </div>
+                                        <div class="flex items-center space-x-1">
+                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                                            </svg>
+                                            <span>Posted 5 hours ago</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="p-2 text-text-secondary hover:text-primary transition-smooth">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <div class="mb-4">
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="badge badge-primary">Tiling</span>
+                                    <span class="badge badge-primary">Bathroom</span>
+                                    <span class="badge badge-primary">Ceramic</span>
+                                </div>
+                            </div>
+
+                            <p class="text-body text-text-secondary mb-4">Master bathroom renovation needs skilled tile installer for floor and shower walls. Premium ceramic tiles, waterproofing required. 2-week project.</p>
+
+                            <div class="flex space-x-3">
+                                <button class="btn btn-primary flex-1">Apply Now</button>
+                                <button class="btn btn-secondary px-4">Save</button>
+                            </div>
+                        </div>
+
+                        <!-- Job Card 3 -->
+                        <div class="card p-6 hover-lift cursor-pointer job-card" data-job-id="3">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="flex-1">
+                                    <div class="flex items-center space-x-2 mb-2">
+                                        <h3 class="text-heading-3 font-bold text-text-primary">Deck Construction & Staining</h3>
+                                    </div>
+                                    <p class="text-body text-text-secondary mb-2">Outdoor Living Co.</p>
+                                    <div class="flex items-center space-x-4 text-caption text-text-secondary">
+                                        <div class="flex items-center space-x-1">
+                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                                            </svg>
+                                            <span>4.1 miles away</span>
+                                        </div>
+                                        <div class="flex items-center space-x-1">
+                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd"/>
+                                            </svg>
+                                            <span>$42/hour</span>
+                                        </div>
+                                        <div class="flex items-center space-x-1">
+                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                                            </svg>
+                                            <span>Posted 1 day ago</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="p-2 text-text-secondary hover:text-primary transition-smooth">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <div class="mb-4">
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="badge badge-primary">Carpentry</span>
+                                    <span class="badge badge-primary">Outdoor</span>
+                                    <span class="badge badge-primary">Staining</span>
+                                </div>
+                            </div>
+
+                            <p class="text-body text-text-secondary mb-4">Build 20x12 composite deck with railing system. Includes preparation, construction, and professional staining. Experience with composite materials preferred.</p>
+
+                            <div class="flex space-x-3">
+                                <button class="btn btn-primary flex-1">Apply Now</button>
+                                <button class="btn btn-secondary px-4">Save</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Load More Button -->
+                    <div class="text-center mt-6">
+                        <button id="loadMoreBtn" class="btn btn-secondary">
+                            <span id="loadMoreText">Load More Jobs</span>
+                            <div id="loadMoreSpinner" class="hidden spinner ml-2"></div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Job Details Panel (Desktop Only) -->
+                <div class="hidden lg:block lg:col-span-4">
+                    <div class="sticky top-24">
+                        <div id="jobDetailsPanel" class="card p-6">
+                            <div class="text-center py-12">
+                                <div class="w-16 h-16 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <svg class="w-8 h-8 text-secondary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V8a2 2 0 012-2V6m8 0H8"/>
+                                    </svg>
+                                </div>
+                                <h3 class="text-heading-3 font-medium text-text-secondary mb-2">Select a Job</h3>
+                                <p class="text-body text-text-secondary">Click on any job card to view detailed information here.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Floating Action Button -->
+    <button id="fabBtn" class="fixed bottom-24 md:bottom-8 right-4 w-14 h-14 bg-primary text-white rounded-full shadow-lg hover:bg-primary-700 transition-smooth flex items-center justify-center z-40">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+        </svg>
+    </button>
+
+    <!-- Bottom Navigation (Mobile) -->
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-surface border-t border-border z-50">
+        <div class="grid grid-cols-4 h-16">
+            <a href="laborer_dashboard.html" class="flex flex-col items-center justify-center space-y-1 text-primary">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+                </svg>
+                <span class="text-caption font-medium">Jobs</span>
+            </a>
+            
+            <a href="user_profile_management.html" class="flex flex-col items-center justify-center space-y-1 text-text-secondary hover:text-primary transition-smooth">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                </svg>
+                <span class="text-caption">Profile</span>
+            </a>
+            
+            <a href="javascript:void(0)" class="flex flex-col items-center justify-center space-y-1 text-text-secondary hover:text-primary transition-smooth">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                </svg>
+                <span class="text-caption">Applications</span>
+            </a>
+            
+            <a href="javascript:void(0)" class="flex flex-col items-center justify-center space-y-1 text-text-secondary hover:text-primary transition-smooth relative">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                </svg>
+                <span class="absolute -top-1 -right-1 w-3 h-3 bg-error rounded-full"></span>
+                <span class="text-caption">Messages</span>
+            </a>
+        </div>
+    </nav>
+
+    <script>
+        // Profile menu toggle
+        const profileMenuBtn = document.getElementById('profileMenuBtn');
+        const profileMenu = document.getElementById('profileMenu');
+
+        profileMenuBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            profileMenu.classList.toggle('hidden');
+        });
+
+        // Close profile menu when clicking outside
+        document.addEventListener('click', function() {
+            profileMenu.classList.add('hidden');
+        });
+
+        // Availability toggle
+        const availabilityToggle = document.getElementById('availabilityToggle');
+        availabilityToggle.addEventListener('change', function() {
+            // Simulate API call to update availability status
+            console.log('Availability status changed:', this.checked);
+        });
+
+        // Job card interactions
+        const jobCards = document.querySelectorAll('.job-card');
+        const jobDetailsPanel = document.getElementById('jobDetailsPanel');
+
+        jobCards.forEach(card => {
+            card.addEventListener('click', function(e) {
+                // Don't trigger if clicking on buttons
+                if (e.target.closest('button')) return;
+
+                const jobId = this.dataset.jobId;
+                showJobDetails(jobId);
+                
+                // Update active state
+                jobCards.forEach(c => c.classList.remove('ring-2', 'ring-primary'));
+                this.classList.add('ring-2', 'ring-primary');
+            });
+        });
+
+        function showJobDetails(jobId) {
+            // Mock job details data
+            const jobDetails = {
+                1: {
+                    title: 'Kitchen Renovation - Plumbing',
+                    company: 'HomeMax Construction',
+                    location: '2.3 miles away',
+                    pay: '$45/hour',
+                    posted: '2 hours ago',
+                    description: 'Complete kitchen renovation requiring experienced plumber for sink installation, dishwasher hookup, and water line modifications. This is a 3-day project starting Monday morning. We need someone with at least 5 years of residential plumbing experience.',
+                    requirements: [
+                        'Licensed plumber with 5+ years experience',
+                        'Own tools and transportation',
+                        'Available Monday-Wednesday',
+                        'Experience with kitchen renovations'
+                    ],
+                    skills: ['Plumbing', 'Kitchen', 'Residential'],
+                    contact: {
+                        name: 'Sarah Johnson',
+                        phone: '(555) 123-4567',
+                        email: 'sarah@homemax.com'
+                    }
+                },
+                2: {
+                    title: 'Bathroom Tile Installation',
+                    company: 'Elite Home Services',
+                    location: '1.8 miles away',
+                    pay: '$38/hour',
+                    posted: '5 hours ago',
+                    description: 'Master bathroom renovation needs skilled tile installer for floor and shower walls. Premium ceramic tiles, waterproofing required. This is a 2-week project with flexible scheduling.',
+                    requirements: [
+                        'Certified tile installer',
+                        'Experience with waterproofing',
+                        'Attention to detail',
+                        'Flexible schedule availability'
+                    ],
+                    skills: ['Tiling', 'Bathroom', 'Ceramic'],
+                    contact: {
+                        name: 'Mike Chen',
+                        phone: '(555) 987-6543',
+                        email: 'mike@elitehome.com'
+                    }
+                },
+                3: {
+                    title: 'Deck Construction & Staining',
+                    company: 'Outdoor Living Co.',
+                    location: '4.1 miles away',
+                    pay: '$42/hour',
+                    posted: '1 day ago',
+                    description: 'Build 20x12 composite deck with railing system. Includes preparation, construction, and professional staining. Experience with composite materials preferred.',
+                    requirements: [
+                        'Carpentry experience required',
+                        'Composite deck experience preferred',
+                        'Own tools and equipment',
+                        'Weather-dependent scheduling'
+                    ],
+                    skills: ['Carpentry', 'Outdoor', 'Staining'],
+                    contact: {
+                        name: 'David Wilson',
+                        phone: '(555) 456-7890',
+                        email: 'david@outdoorliving.com'
+                    }
+                }
+            };
+
+            const job = jobDetails[jobId];
+            if (!job) return;
+
+            jobDetailsPanel.innerHTML = `
+                <div class="mb-6">
+                    <h2 class="text-heading-2 font-bold text-text-primary mb-2">${job.title}</h2>
+                    <p class="text-body text-text-secondary mb-4">${job.company}</p>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <div class="flex items-center space-x-2 text-caption text-text-secondary">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>${job.location}</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-caption text-text-secondary">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>${job.pay}</span>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        ${job.skills.map(skill => `<span class="badge badge-primary">${skill}</span>`).join('')}
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <h3 class="text-heading-3 font-medium text-text-primary mb-3">Job Description</h3>
+                    <p class="text-body text-text-secondary">${job.description}</p>
+                </div>
+
+                <div class="mb-6">
+                    <h3 class="text-heading-3 font-medium text-text-primary mb-3">Requirements</h3>
+                    <ul class="space-y-2">
+                        ${job.requirements.map(req => `
+                            <li class="flex items-start space-x-2 text-body text-text-secondary">
+                                <svg class="w-4 h-4 text-success mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                                <span>${req}</span>
+                            </li>
+                        `).join('')}
+                    </ul>
+                </div>
+
+                <div class="mb-6">
+                    <h3 class="text-heading-3 font-medium text-text-primary mb-3">Contact Information</h3>
+                    <div class="space-y-2">
+                        <p class="text-body text-text-secondary"><strong>Contact:</strong> ${job.contact.name}</p>
+                        <p class="text-body text-text-secondary"><strong>Phone:</strong> ${job.contact.phone}</p>
+                        <p class="text-body text-text-secondary"><strong>Email:</strong> ${job.contact.email}</p>
+                    </div>
+                </div>
+
+                <div class="space-y-3">
+                    <button class="btn btn-primary w-full">Apply for This Job</button>
+                    <button class="btn btn-secondary w-full">Save for Later</button>
+                </div>
+            `;
+        }
+
+        // Load more functionality
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        const loadMoreText = document.getElementById('loadMoreText');
+        const loadMoreSpinner = document.getElementById('loadMoreSpinner');
+
+        loadMoreBtn.addEventListener('click', function() {
+            loadMoreText.textContent = 'Loading...';
+            loadMoreSpinner.classList.remove('hidden');
+            this.disabled = true;
+
+            // Simulate API call
+            setTimeout(() => {
+                loadMoreText.textContent = 'Load More Jobs';
+                loadMoreSpinner.classList.add('hidden');
+                this.disabled = false;
+                
+                // Here you would typically append new job cards to the feed
+                console.log('Loading more jobs...');
+            }, 1500);
+        });
+
+        // FAB functionality
+        const fabBtn = document.getElementById('fabBtn');
+        fabBtn.addEventListener('click', function() {
+            window.location.href = 'user_profile_management.html';
+        });
+
+        // Pull to refresh simulation
+        let startY = 0;
+        let currentY = 0;
+        let pullDistance = 0;
+        const pullThreshold = 100;
+
+        document.addEventListener('touchstart', function(e) {
+            startY = e.touches[0].clientY;
+        });
+
+        document.addEventListener('touchmove', function(e) {
+            currentY = e.touches[0].clientY;
+            pullDistance = currentY - startY;
+
+            if (pullDistance > 0 && window.scrollY === 0) {
+                e.preventDefault();
+                // Visual feedback for pull to refresh could be added here
+            }
+        });
+
+        document.addEventListener('touchend', function(e) {
+            if (pullDistance > pullThreshold && window.scrollY === 0) {
+                // Trigger refresh
+                console.log('Refreshing job feed...');
+                // Here you would typically reload the job feed
+            }
+            pullDistance = 0;
+        });
+
+        // Initialize with first job selected on desktop
+        if (window.innerWidth >= 1024) {
+            setTimeout(() => {
+                showJobDetails('1');
+                jobCards[0].classList.add('ring-2', 'ring-primary');
+            }, 100);
+        }
+        // Authentication Functions
+        function handleLogout() {
+        // Confirm logout action
+        if (confirm('Are you sure you want to sign out?')) {
+            // Clear all authentication data
+            localStorage.removeItem('skillconnect_user');
+            sessionStorage.removeItem('redirect_dashboard');
+            
+            // Clear any other session-related data
+            sessionStorage.clear();
+            
+            // Show logout message briefly
+            const logoutMessage = document.createElement('div');
+            logoutMessage.className = 'fixed top-4 right-4 bg-success text-white px-4 py-2 rounded-lg shadow-lg z-50';
+            logoutMessage.textContent = 'Successfully signed out';
+            document.body.appendChild(logoutMessage);
+            
+            // Redirect to login page after brief delay
+            setTimeout(() => {
+                window.location.href = 'user_login.html';
+            }, 1000);
+        }
+    }
+    </script>
+</body>
+</html>
